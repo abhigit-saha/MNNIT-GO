@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { initializeSocket } from "./controllers/leaderboard";
+import { initializeSocket } from "./src/controllers/leaderboard";
+import { createServer } from "http";
 
 const app = express();
-initializeSocket(app);
+const httpServer = createServer(app);
+initializeSocket(httpServer);
 
 app.use(
   cors({

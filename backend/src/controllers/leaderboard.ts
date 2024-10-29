@@ -1,5 +1,5 @@
 import { asyncHandler } from "../utils/asyncHandler";
-import Redis from "redis";
+import * as Redis from "redis";
 import { Server } from "socket.io";
 
 let io: Server;

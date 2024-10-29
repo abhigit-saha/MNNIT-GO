@@ -6,7 +6,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "jsx": "react"
   },
-  "include": ["src/**/*.ts", "app.ts", "constants.ts", "index.ts"]
+  "include": ["*/**/*.ts", "*/**/*.tsx"]
 }
