@@ -1,11 +1,17 @@
 import React from 'react';
-import Hero from './components/Hero';
+import { Route, Routes } from 'react-router-dom';
+import Home from './home/Home';
+import Login from './components/Login';
+import Signup from './components/Signup';
+
 
 function App() {
   return (
-    <div>
-      <Hero />
-    </div>
+    <Routes>
+     <Route path="/" element={<Home/>}/>
+     <Route path="/login" element={<Login />}/>
+     <Route path="/Sign Up" element={<Signup />}/>
+    </Routes>
   );
 }
 
