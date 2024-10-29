@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import "../components/Login.css"
@@ -10,7 +10,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+   const navigate=useNavigate();
   const onSubmit = async (data) => {
     try {
       const response = await fetch("http://localhost:4001/user/login", {
@@ -29,6 +29,7 @@ const Login = () => {
       if (response.ok) {
         toast.success("Successfully logged in");
         localStorage.setItem("User", JSON.stringify(responseData.user));
+        navigate("/" , {replace:true})
       } else {
         toast.error(responseData.message || "An error occurred");
       }
