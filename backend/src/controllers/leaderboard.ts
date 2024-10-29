@@ -37,12 +37,12 @@ const emitLeaderboard = async () => {
 
   io.emit("leaderboardUpdate", formattedData);
 };
-const displayLeaderboard = asyncHandler(async (req, res) => {
-  const data = redisClient.zRange("leaderboard", 0, 9);
-  return res.json(
-    new ApiResponse(200, data, "Leaderboard fetched successfully")
-  );
-});
+// const displayLeaderboard = asyncHandler(async (req, res) => {
+//   const data = redisClient.zRange("leaderboard", 0, 9);
+//   return res.json(
+//     new ApiResponse(200, data, "Leaderboard fetched successfully")
+//   );
+// });
 
 const updateLeaderboard = asyncHandler(async (req, res) => {
   const { username, score } = req.body;
@@ -54,4 +54,4 @@ const updateLeaderboard = asyncHandler(async (req, res) => {
   );
 });
 
-export { displayLeaderboard, updateLeaderboard };
+export { emitLeaderboard, updateLeaderboard, initializeSocket };
