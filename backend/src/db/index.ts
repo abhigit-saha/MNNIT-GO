@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../../constants.js";
+import { initializeSocket } from "../controllers/leaderboard.js";
 
 const connectDB = async () => {
   try {

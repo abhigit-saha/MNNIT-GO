@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const LeaderboardComponent = () => {
+const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState<any>([]);
   const [socket, setSocket] = useState<any | null>(null);
 
@@ -21,6 +21,7 @@ const LeaderboardComponent = () => {
   return (
     <>
       <div className="space-y-2">
+        LEADERBOARD
         {leaderboard.map((entry, index) => (
           <div
             key={entry.username}
@@ -38,4 +39,4 @@ const LeaderboardComponent = () => {
   );
 };
 
-export default LeaderboardComponent;
+export default Leaderboard;
