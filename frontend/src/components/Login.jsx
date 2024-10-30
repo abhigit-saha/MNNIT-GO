@@ -3,6 +3,8 @@ import { Link,useNavigate} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import "../components/Login.css"
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
   const {
@@ -87,6 +89,16 @@ const Login = () => {
               <div className="btn-layer"></div>
               <input type="submit" value="Login" />
             </div>
+            <div className="flex flex-col justify-center ">
+            <div className="text-gray-700 text-center m-4">OR</div>
+            <Link 
+            to="/google" 
+            className="text-center m-4 border border-black rounded-md p-2 hover:bg-gray-50 cursor-pointer">
+              Login with google  < FontAwesomeIcon icon={faGoogle} className='ml-2' /></Link>
+            
+           
+            
+          </div>
             
             <div className="signup-link">
               Not a member? <Link to="/Sign Up">Signup now</Link>

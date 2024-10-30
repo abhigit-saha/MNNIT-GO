@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "location": "Library",
+        "title": "Transforming Spaces, Creating Memories",
+        
+        
+        "image": "/dec1.jpg"
+    },
+    {
+        "id": 2,
+        "location": "Admin Building",
+        "title": "Turning Dreams into Reality",
+        
+        
+        "image": "/dec2.jpg"
+    },
+    {
+        "id": 3,
+        "location": "Cafe 69",
+        "title": "Where Every Detail Blossoms",
+        
+        
+        "image": "/dec3.jpg"
+    },
+    {
+        "id": 4,
+        "location": "Yamuna",
+        "title": "Crafting Magical Moments",
+        
+        
+        "image": "/dec4.jpg"
+    },
+    {
+        "id": 5,
+        "location": "Dewsis",
+        "title": "Elevate Your Wedding to Grandness",
+        
+        
+        "image": "/dec5.jpg"
+    }
+   
+    
+]

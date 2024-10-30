@@ -4,6 +4,10 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import "../components/SignUp.css"
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { GoogleLogin } from '@react-oauth/google';
+
 
 function Signup() {
   const {
@@ -134,6 +138,20 @@ function Signup() {
                 Login
               </Link>
             </p>
+            
+            
+
+            
+          </div>
+          <div className="flex flex-col justify-center ">
+            <div className="text-gray-700 text-center">OR</div>
+            <Link 
+            to="/google" 
+            className="text-center m-4 border border-black rounded-md p-2 hover:bg-gray-50 cursor-pointer">
+              SignUp with google  < FontAwesomeIcon icon={faGoogle} className='ml-2' /></Link>
+            
+           
+            
           </div>
         </form>
       </div>
