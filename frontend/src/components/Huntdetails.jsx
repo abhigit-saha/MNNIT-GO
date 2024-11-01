@@ -58,7 +58,7 @@ const HuntDetails = () => {
         <h1>{hunt.name}</h1>
         
         <div className="image-container">
-          <img src={hunt.imageUrl || "/api/placeholder/600/400"} alt={hunt.name} />
+          <img src={hunt.image} alt={hunt.name} />
         </div>
 
         {!completed ? (
