@@ -1,11 +1,16 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primaryDark: '#24263A',  // Background dark color
+        primaryText: '#E5E7EB',  // Light text color
+        highlight: '#F472B6',    // Pink button highlight color
+      },
+    },
   },
   plugins: [],
 };
