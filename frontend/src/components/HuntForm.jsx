@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FileUploader } from "react-drag-drop-files";
+import { json } from "react-router-dom";
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+
 function HuntForm() {
   const [formData, setFormData] = useState({
     name: "",
     title: "",
+    description: "",
     image: "",
+    difficulty: "medium", // Added default difficulty
     locations: [],
   });
 
@@ -23,6 +27,8 @@ function HuntForm() {
       [e.target.name]: e.target.value,
     });
   };
+
+  // Rest of the existing functions remain the same until addLocation
   const handleHuntImageUpload = async (file) => {
     setIsUploadingHuntImage(true);
 
@@ -94,6 +100,8 @@ function HuntForm() {
               {
                 image: "",
                 text: "",
+                isUnlocked: false,
+                answer: "", // Added answer field
               },
             ],
           },
@@ -103,6 +111,7 @@ function HuntForm() {
     }
   };
 
+  // Rest of the functions remain the same...
   const addClueToLocation = (locationIndex) => {
     const updatedLocations = [...formData.locations];
     updatedLocations[locationIndex] = {
@@ -158,25 +167,25 @@ function HuntForm() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:4001/hunts",
-        formData
-      );
-      console.log("Hunt created:", response.data);
-      setFormData({
-        name: "",
-        title: "",
-        image: "",
-        locations: [],
-      });
-    } catch (error) {
-      console.error("Error creating hunt:", error);
-    }
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:4001/hunts",
+    //     formData
+    //   );
+    //   console.log("Hunt created:", response.data);
+    //   setFormData({
+    //     name: "",
+    //     title: "",
+    //     image: "",
+    //     locations: [],
+    //   });
+    // } catch (error) {
+    //   console.error("Error creating hunt:", error);
+    // }
+    alert(JSON.stringify(formData));
   };
-
   return (
     <div className="card bg-base-100 w-full max-w-2xl shadow-md border border-gray-300 rounded-lg mx-auto">
       <div className="card-body p-6">
@@ -185,7 +194,7 @@ function HuntForm() {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Basic hunt info fields remain the same */}
+          {/* Basic hunt info fields */}
           <div className="form-control">
             <label className="label">
               <span className="label-text text-gray-600">Hunt Name</span>
@@ -213,7 +222,39 @@ function HuntForm() {
               required
             />
           </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-gray-600">Description</span>
+            </label>
+            <input
+              type="text"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              className="input input-bordered w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
 
+          {/* Added Difficulty Selection */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-gray-600">Difficulty</span>
+            </label>
+            <select
+              name="difficulty"
+              value={formData.difficulty}
+              onChange={handleChange}
+              className="select select-bordered w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            >
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+
+          {/* Hunt Image section remains the same */}
           <div className="form-control">
             <label className="label">
               <span className="label-text text-gray-600">Hunt Image</span>
@@ -226,6 +267,7 @@ function HuntForm() {
                 maxSize={5}
                 classes="w-full h-full"
               >
+                {/* FileUploader content remains the same */}
                 <div className="flex flex-col items-center justify-center h-full">
                   {isUploadingHuntImage ? (
                     <p className="text-blue-500">Uploading...</p>
@@ -255,6 +297,7 @@ function HuntForm() {
             </div>
           </div>
 
+          {/* Locations & Clues section */}
           <div className="form-control">
             <label className="label">
               <span className="label-text text-gray-600">
@@ -330,6 +373,7 @@ function HuntForm() {
                         </div>
 
                         <div className="space-y-3">
+                          {/* Clue Image uploader remains the same */}
                           <div className="form-control">
                             <label className="label">
                               <span className="label-text text-gray-600">
@@ -402,6 +446,30 @@ function HuntForm() {
                               }
                               className="input input-bordered w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                               placeholder="Enter clue text"
+                            />
+                          </div>
+
+                          {/* Added Answer Field */}
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-gray-600">
+                                Answer
+                              </span>
+                            </label>
+                            <input
+                              type="text"
+                              value={clue.answer}
+                              onChange={(e) =>
+                                updateClue(
+                                  locationIndex,
+                                  clueIndex,
+                                  "answer",
+                                  e.target.value
+                                )
+                              }
+                              className="input input-bordered w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                              placeholder="Enter correct answer"
+                              required
                             />
                           </div>
                         </div>

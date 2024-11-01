@@ -1,52 +1,59 @@
-
 import mongoose from "mongoose";
 
 const huntSchema = mongoose.Schema({
-    name: {
+  name: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  difficulty: {
+    type: String,
+    enum: ["Easy", "Medium", "Hard"],
+    default: "Medium",
+  },
+  locations: [
+    {
+      name: {
         type: String,
-        required: true
-    },
-    title: {
+        required: true,
+      },
+      hint: {
         type: String,
-        required: true
+        required: true,
+      },
     },
-    description: {
+  ],
+  clues: [
+    {
+      text: {
         type: String,
-        required: true
-    },
-    image: {
+        required: true,
+      },
+      image: {
         type: String,
-        required: true
-    },
-    difficulty: {
+        required: false,
+      },
+      answer: {
         type: String,
-        enum: ['Easy', 'Medium', 'Hard'],
-        default: 'Medium'
+        required: true,
+      },
+      isUnlocked: {
+        type: Boolean,
+        default: false,
+      },
     },
-    locations: [{
-        name: {
-            type: String,
-            required: true
-        },
-        hint: {
-            type: String,
-            required: true
-        }
-    }],
-    clues: [{
-        text: {
-            type: String,
-            required: true
-        },
-        answer: {
-            type: String,
-            required: true
-        },
-        isUnlocked: {
-            type: Boolean,
-            default: false
-        }
-    }]
+  ],
 });
 
 const Hunt = mongoose.model("Hunt", huntSchema);
