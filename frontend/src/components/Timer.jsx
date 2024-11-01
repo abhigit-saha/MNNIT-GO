@@ -4,7 +4,6 @@ const Timer = () => {
   const [elapsedTime, setElapsedTime] = useState({ minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    // Get the start time from localStorage or set it if not exists
     let startTime = localStorage.getItem("timerStartTime");
     if (!startTime) {
       startTime = Date.now().toString();
@@ -22,10 +21,8 @@ const Timer = () => {
       setElapsedTime({ minutes, seconds });
     };
 
-    // Initial calculation
     calculateTime();
 
-    // Update every second
     const interval = setInterval(calculateTime, 1000);
 
     return () => clearInterval(interval);

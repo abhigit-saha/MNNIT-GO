@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Timer from "./Timer";
 
 const HuntDetails = () => {
   const { id } = useParams();
@@ -16,6 +17,10 @@ const HuntDetails = () => {
       try {
         const response = await axios.get(`http://localhost:8000/hunts/${id}`);
         setHunt(response.data);
+        if (localStorage.getItem("isCurrentlyRunning") !== "true") {
+          localStorage.setItem("timerStartTime", Date.now().toString());
+          localStorage.setItem("isCurrentlyRunning", "true");
+        }
       } catch (error) {
         console.error("Error fetching hunt details:", error);
       } finally {
@@ -59,7 +64,8 @@ const HuntDetails = () => {
   }
 
   return (
-    <div className="hunt-container">
+    <div className="hunt-container flex flex-col">
+      <Timer />
       <div className="hunt-card">
         <h1>{hunt.name}</h1>
 
