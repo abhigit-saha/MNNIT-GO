@@ -9,10 +9,11 @@ import Locations from "./locations/Locations";
 import Hunts from "./components/Hunts";
 import Huntdetails from "./components/Huntdetails";
 import { Toaster } from "react-hot-toast";
+import Leaderboard from "./components/Elements/Leaderboard";
 
 // Protected Route Component
 function ProtectedRoute({ children }) {
-  const user = localStorage.getItem("User"); // Check if the user is logged in
+  const user = JSON.parse(localStorage.getItem("User")); // Check if the user is logged in
 
   if (!user) {
     return <Navigate to="/login" replace />; // Redirect to login if not authenticated
@@ -27,10 +28,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Sign Up" element={<Signup />} />
+        <Route path="/signup" element={<Signup />} /> {/* Ensure consistent casing */}
         <Route path="/locations" element={<Locations />} />
         <Route path="/hunts" element={<Hunts />} />
         <Route path="/hunts/:id" element={<Huntdetails />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
         <Route 
           path="/dashboard" 
           element={

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
+    /* Basic Options */
     "target": "ESNext",
-    "outDir": "./src",
-    
-    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "outDir": "./dist",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -11,13 +11,39 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": false,
+    "sourceMap": true,
+    "jsx": "react-jsx",
+
+    /* Experimental Node.js module settings */
+    "moduleDetection": "force",
+
+    /* Uncomment if transpiling with TypeScript */
+    // "declaration": true,
+    // "declarationMap": true,
+    
+    /* Uncomment if building for a library in a monorepo */
+    // "composite": true,
+
+    /* Uncomment if your code does NOT run in the DOM */
+    // "lib": ["es2022"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/db/index.js", "src/app.js", "src/constants.js", "src/index.js", "src/controllers/leaderboard.js", "src/utils/APIError.js", "src/utils/APIResponse.js", "src/utils/asyncHandler.js"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "src/db/index.js",
+    "src/app.js",
+    "src/constants.js",
+    "src/index.js",
+    "src/controllers/leaderboard.js",
+    "src/utils/APIError.js",
+    "src/utils/APIResponse.js",
+    "src/utils/asyncHandler.js"
+  ],
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ]
 }

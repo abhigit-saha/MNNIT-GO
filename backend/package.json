@@ -19,10 +19,15 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+<<<<<<< HEAD
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.7.3",
     "path": "^0.12.7",
+=======
+    "ioredis": "^5.4.1",
+    "nodemon": "^3.1.7",
+>>>>>>> c6fa7f7b4d85a03964d88be4d21500b56d3bef3d
     "redis": "^4.7.0",
     "socket.io": "^4.8.1"
   },
