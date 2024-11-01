@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 
 const huntSchema = mongoose.Schema({
@@ -46,7 +45,12 @@ const huntSchema = mongoose.Schema({
             type: Boolean,
             default: false
         }
-    }]
+    }],
+    creator: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 });
 
 const Hunt = mongoose.model("Hunt", huntSchema);
