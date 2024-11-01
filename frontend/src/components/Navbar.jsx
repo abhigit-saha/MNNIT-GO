@@ -87,6 +87,7 @@ function Navbar() {
           <div className="absolute left-4 top-20 w-48 border border-white/20 bg-black/80 backdrop-blur-sm rounded-lg shadow-lg py-2 px-3">
             <Link to="/" className="block py-2 text-white hover:text-gray-300">Home</Link>
             <Link to="/locations" className="block py-2 text-white hover:text-gray-300">Locations</Link>
+            <Link to="/hunts" className="block py-2 text-white hover:text-gray-300">Hunts</Link>
             <Link to="/portfolio" className="block py-2 text-white hover:text-gray-300">Portfolio</Link>
             <Link to="/about" className="block py-2 text-white hover:text-gray-300">About</Link>
           </div>

@@ -8,7 +8,7 @@ function LocationsPage() {
   useEffect(() => {
     const getLocation = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/locations");
+        const res = await axios.get("http://localhost:8000/locations");
         console.log(res.data);
         setLocation(res.data);
       } catch (error) {

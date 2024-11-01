@@ -1,0 +1,118 @@
+
+     [
+      {
+        "name": "Historic Downtown Adventure",
+        "title": "The Lost Merchant's Tale",
+        "description": "Explore the historic downtown area to uncover the story of a mysterious 19th-century merchant and their hidden legacy.",
+        "image": "downtown-historic.jpg",
+        "difficulty": "Medium",
+        "locations": [
+          {
+            "name": "Old Town Square",
+            "hint": "Where citizens once gathered to hear important announcements, a clock still keeps ancient time."
+          },
+          {
+            "name": "Merchant's Building",
+            "hint": "Look for the building with iron shutters and a date stone from 1875."
+          },
+          {
+            "name": "Harbor District",
+            "hint": "The old lighthouse holds more secrets than it shows."
+          }
+        ],
+        "clues": [
+          {
+            "text": "I have four faces but cannot see, I have hands but cannot feel, I tell stories of what used to be. What am I?",
+            "answer": "clock tower",
+            "isUnlocked": false
+          },
+          {
+            "text": "Behind these iron wings, numbers tell a tale. Find the sum of the building's birth year.",
+            "answer": "21",
+            "isUnlocked": false
+          },
+          {
+            "text": "Count the steps to reach the light, divide by compass points, what number comes to sight?",
+            "answer": "12",
+            "isUnlocked": false
+          }
+        ]
+      },
+      {
+        "name": "Campus Mystery",
+        "title": "The Professor's Puzzle",
+        "description": "A beloved professor has left a series of intellectual challenges across campus. Solve them to unlock a special message.",
+        "image": "university-campus.jpg",
+        "difficulty": "Hard",
+        "locations": [
+          {
+            "name": "Library Reading Room",
+            "hint": "Search among the oldest books in the reference section."
+          },
+          {
+            "name": "Physics Building",
+            "hint": "The pendulum holds the key to time."
+          },
+          {
+            "name": "Botanical Gardens",
+            "hint": "Count the rings of knowledge in the oldest tree."
+          }
+        ],
+        "clues": [
+          {
+            "text": "First edition dates hold the key. Add the last two digits of each year you see.",
+            "answer": "42",
+            "isUnlocked": false
+          },
+          {
+            "text": "The pendulum swings in perfect time, every tenth swing reveals the rhyme.",
+            "answer": "gravity",
+            "isUnlocked": false
+          },
+          {
+            "text": "Ancient guardian of botanical lore, my rings tell stories of years before.",
+            "answer": "oak tree",
+            "isUnlocked": false
+          }
+        ]
+      },
+      {
+        "name": "Park Adventure",
+        "title": "Nature's Secret Code",
+        "description": "A family-friendly adventure through the city park, discovering nature's hidden patterns and secrets.",
+        "image": "city-park.jpg",
+        "difficulty": "Easy",
+        "locations": [
+          {
+            "name": "Duck Pond",
+            "hint": "Watch the pattern of the fountain's spray."
+          },
+          {
+            "name": "Butterfly Garden",
+            "hint": "Count the colors in the rainbow bed of flowers."
+          },
+          {
+            "name": "Ancient Oak",
+            "hint": "Look for the plaque that tells a story."
+          }
+        ],
+        "clues": [
+          {
+            "text": "Water dances in the air, count the spurts with special care.",
+            "answer": "7",
+            "isUnlocked": false
+          },
+          {
+            "text": "Colors of the rainbow bright, in these flowers take delight.",
+            "answer": "violet",
+            "isUnlocked": false
+          },
+          {
+            "text": "How many acorns can you spot on the memorial plaque?",
+            "answer": "5",
+            "isUnlocked": false
+          }
+        ]
+      }
+    ]
+  
