@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import Home from "./home/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -8,6 +8,7 @@ import Hunts from "./components/Hunts.jsx";
 import Huntdetails from "./components/Huntdetails.jsx";
 import Locations from "./components/LocationsPage.jsx";
 import HuntForm from "./components/HuntForm.jsx";
+import Timer from "./components/Timer.jsx";
 function App() {
   return (
     <>

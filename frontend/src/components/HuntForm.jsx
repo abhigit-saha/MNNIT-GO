@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { FileUploader } from "react-drag-drop-files";
 import { json } from "react-router-dom";
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
-
+import Timer from "./Timer";
 function HuntForm() {
   const [formData, setFormData] = useState({
     name: "",
