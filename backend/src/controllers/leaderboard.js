@@ -1,76 +1,78 @@
-<<<<<<< HEAD:backend/src/controllers/leaderboard.js
-import Redis from "redis";
-=======
-import { asyncHandler } from "../utils/asyncHandler";
-import { Redis } from "ioredis";
->>>>>>> c6fa7f7b4d85a03964d88be4d21500b56d3bef3d:backend/src/controllers/leaderboard.ts
-import { Server } from "socket.io";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiResponse } from "../utils/APIResponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js"; // Ensure correct import for asyncHandler
+import Redis from "ioredis"; // Use default import for ioredis
+import { Server } from "socket.io"; // Import Server from socket.io
+import { ApiResponse } from "../utils/APIResponse.js"; // Correct import for ApiResponse
 
 let io;
 
-const redisClient = Redis.createClient();
+// Create a Redis client
+const redisClient = new Redis(); // Initialize the Redis client properly
 
-<<<<<<< HEAD:backend/src/controllers/leaderboard.js
 const initializeSocket = (server) => {
   io = new Server(server, {
     cors: {
-      origin: "*", 
-=======
-import { ApiResponse } from "../utils/APIResponse";
-// let isRedisConnected = true;
-const initializeSocket = (server: any) => {
-  io = new Server(server, {
-    cors: {
-      origin: "*", //for now allow all
+      origin: "*", // Allow all origins for now
       methods: ["GET", "POST"],
->>>>>>> c6fa7f7b4d85a03964d88be4d21500b56d3bef3d:backend/src/controllers/leaderboard.ts
     },
   });
 
   io.on("connection", async (socket) => {
     console.log("Client connected");
 
-    emitLeaderboard();
+    // Emit the leaderboard data when a client connects
+    await emitLeaderboard();
 
     socket.on("disconnect", () => {
       console.log("Client disconnected");
     });
-    // await redisClient.disconnect();
   });
 };
 
+// Emit leaderboard data to all connected clients
 const emitLeaderboard = async () => {
-  const leaderboardData = await redisClient.zrange(
-    "leaderboard",
-    0,
-    9,
-    "REV",
-    "WITHSCORES"
-  );
-  const formattedData = [];
+  try {
+    const leaderboardData = await redisClient.zrange(
+      "leaderboard",
+      0,
+      9,
+      "REV",
+      "WITHSCORES"
+    );
+    const formattedData = [];
 
-  for (let i = 0; i < leaderboardData.length; i += 2) {
-    formattedData.push({
-      username: leaderboardData[i],
-      score: leaderboardData[i + 1]!,
-    });
+    for (let i = 0; i < leaderboardData.length; i += 2) {
+      formattedData.push({
+        username: leaderboardData[i],
+        score: leaderboardData[i + 1],
+      });
+    }
+    
+    console.log("Leaderboard data", leaderboardData);
+    console.log("Formatted data", formattedData);
+    io.emit("leaderboardUpdate", formattedData);
+    console.log("Leaderboard updated!!!");
+  } catch (error) {
+    console.error("Error emitting leaderboard:", error);
   }
-  console.log("Leaderboard data", leaderboardData);
-  console.log("Formatted data", formattedData);
-  io.emit("leaderboardUpdate", formattedData);
-  console.log("leaderboard updated!!!");
 };
 
+// Update the leaderboard with a new score
 const updateLeaderboard = asyncHandler(async (req, res) => {
   const { username, score } = req.body;
-  await redisClient.zadd("leaderboard", score, username);
 
+  // Validate the incoming data
+  if (!username || typeof score !== "number") {
+    return res.status(400).json(new ApiResponse(400, null, "Invalid data"));
+  }
+
+  await redisClient.zadd("leaderboard", score, username);
+  
+  // Emit the updated leaderboard
   await emitLeaderboard();
   return res.json(
     new ApiResponse(200, null, "Leaderboard updated successfully")
   );
 });
 
+// Export functions for use in other parts of the application
 export { emitLeaderboard, updateLeaderboard, initializeSocket };
