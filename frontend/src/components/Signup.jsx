@@ -14,7 +14,7 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  // Standard signup form submission
+
   const onSubmit = async (data) => {
     const userInfo = {
       fullname: data.fullname,

@@ -28,25 +28,27 @@ const huntSchema = mongoose.Schema({
             type: String,
             required: true
         },
-        hint: {
+        clues: [{
+          image: {
             type: String,
             required: true
-        }
+        },
+          text: {
+              type: String,
+              required: true
+          },
+          answer: {
+              type: String,
+              required: true
+          },
+          isUnlocked: {
+              type: Boolean,
+              default: false
+          }
+      }]
+        
     }],
-    clues: [{
-        text: {
-            type: String,
-            required: true
-        },
-        answer: {
-            type: String,
-            required: true
-        },
-        isUnlocked: {
-            type: Boolean,
-            default: false
-        }
-    }]
+   
 });
 
 const Hunt = mongoose.model("Hunt", huntSchema);

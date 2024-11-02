@@ -8,34 +8,48 @@
       "locations": [
         {
           "name": "Main Entrance",
-          "hint": "Look for the foundation stone near the grand steps."
+          "clues": [
+            {
+              "image":"/admin.jpg",
+              "text": "Add the digits of the year when MNNIT got its NIT status. Divide by 2 to proceed.",
+              "answer": "11",
+              "isUnlocked": false
+            }
+           
+          ]
         },
         {
           "name": "Director's Office Wing",
-          "hint": "Find the display board showing past directors."
+          "clues":[
+            {
+              "image":"/admin.jpg",
+              "text":"How many directors' photos are displayed in golden frames on the heritage wall?",
+              "answer":"7",
+              "isUnlocked":false
+
+
+          }
+        ]
+          
+  
+          
         },
         {
           "name": "Conference Hall",
-          "hint": "The ceremonial bell holds a clue."
-        }
-      ],
-      "clues": [
-        {
-          "text": "Add the digits of the year when MNNIT got its NIT status. Divide by 2 to proceed.",
-          "answer": "11",
-          "isUnlocked": false
-        },
-        {
-          "text": "How many directors' photos are displayed in golden frames on the heritage wall?",
-          "answer": "7",
-          "isUnlocked": false
-        },
-        {
-          "text": "Count the pillars at the main entrance, multiply by windows on the front facade, divide by 4.",
-          "answer": "6",
-          "isUnlocked": false
+          "clues":[
+            {
+              "image":"/admin.jpg",
+              "text":"Count the pillars at the main entrance, multiply by windows on the front facade,divide by 4",
+              "answer":"6",
+              "isUnlocked":false
+
+
+          }
+        ]
+          
         }
       ]
+     
     },
     {
       "name": "Cafe69 Adventure",
@@ -46,34 +60,39 @@
       "locations": [
         {
           "name": "Menu Wall",
-          "hint": "Check the special menu board near the counter."
+          "clues":[
+            {
+              "image":"cafe69.jpg",
+              "text": "What's the price of the most popular combo meal divided by 10?",
+              "answer": "15",
+              "isUnlocked": false
+            }
+          ]
         },
         {
           "name": "Seating Area",
-          "hint": "Look for the table with carved initials."
+          "clues":[
+            {
+              "image":"cafe69.jpg",
+               "text": "Count the number of ceiling fans in the main seating area, multiply by 2.",
+               "answer": "16",
+               "isUnlocked": false
+          }
+        ]
         },
         {
           "name": "Garden Section",
-          "hint": "Find the oldest banyan tree near the outdoor seating."
-        }
-      ],
-      "clues": [
-        {
-          "text": "What's the price of the most popular combo meal divided by 10?",
-          "answer": "15",
-          "isUnlocked": false
-        },
-        {
-          "text": "Count the number of ceiling fans in the main seating area, multiply by 2.",
-          "answer": "16",
-          "isUnlocked": false
-        },
-        {
-          "text": "How many stone benches are there in the garden section?",
-          "answer": "4",
-          "isUnlocked": false
+          "clues":[
+            {
+              "image":"cafe69.jpg",
+              "text": "How many stone benches are there in the garden section?",
+               "answer": "4",
+               "isUnlocked": false
+            }
+          ]
         }
       ]
+     
     },
     {
       "name": "Central Library Mystery",
@@ -84,33 +103,37 @@
       "locations": [
         {
           "name": "Reference Section",
-          "hint": "Start at the Engineering Mathematics shelf."
+          "clues":[{
+            "image":"central-library.jpg",
+            "text": "On the first bookshelf of Engineering Mathematics, add the edition numbers of all Kreyszig books on display.",
+          "answer": "23",
+          "isUnlocked": false
+          }
+        ]
         },
         {
           "name": "Digital Library",
-          "hint": "Check the computer with terminal number matching today's date."
+          "clues":[
+            {
+              "image":"central-library.jpg",
+              "text": "What floor number has the IEEE journal section? Multiply by the number of computer labs.",
+              "answer": "8",
+              "isUnlocked": false
+            }
+          ]
         },
         {
           "name": "Reading Hall",
-          "hint": "Find the largest study table near the window."
-        }
-      ],
-      "clues": [
-        {
-          "text": "On the first bookshelf of Engineering Mathematics, add the edition numbers of all Kreyszig books on display.",
-          "answer": "23",
-          "isUnlocked": false
-        },
-        {
-          "text": "What floor number has the IEEE journal section? Multiply by the number of computer labs.",
-          "answer": "8",
-          "isUnlocked": false
-        },
-        {
-          "text": "Count the number of ceiling lights in the main reading hall, divide by the number of emergency exits.",
-          "answer": "12",
-          "isUnlocked": false
+          "clues":[
+            {
+              "image":"central-library.jpg",
+              "text": "Count the number of ceiling lights in the main reading hall, divide by the number of emergency exits.",
+              "answer": "12",
+              "isUnlocked": false
+            }
+          ]
         }
       ]
+     
     }
   ]
