@@ -21,6 +21,7 @@ const HuntDetails = () => {
           localStorage.setItem("timerStartTime", Date.now().toString());
           localStorage.setItem("isCurrentlyRunning", "true");
         }
+        
       } catch (error) {
         console.error("Error fetching hunt details:", error);
       } finally {
@@ -28,6 +29,9 @@ const HuntDetails = () => {
       }
     };
     fetchHuntDetails();
+    return()=>{
+      localStorage.removeItem("isCurrentlyRunning")
+    }
   }, [id]);
 
   const handleAnswerSubmit = () => {
@@ -70,14 +74,7 @@ const HuntDetails = () => {
         <h1>{hunt.name}</h1>
 
         <div className="image-container">
-<<<<<<< HEAD
           <img src={hunt.image} alt={hunt.name} />
-=======
-          <img
-            src={hunt.imageUrl || "/api/placeholder/600/400"}
-            alt={hunt.name}
-          />
->>>>>>> aea28c15467c8f8a400b025f11b10a5285d1e238
         </div>
 
         {!completed ? (

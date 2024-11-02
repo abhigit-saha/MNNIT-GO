@@ -11,7 +11,7 @@ function HuntForm() {
     title: "",
     description: "",
     image: "",
-    difficulty: "medium", // Added default difficulty
+    difficulty: "medium",
     locations: [],
   });
 
@@ -28,7 +28,7 @@ function HuntForm() {
     });
   };
 
-  // Rest of the existing functions remain the same until addLocation
+  
   const handleHuntImageUpload = async (file) => {
     setIsUploadingHuntImage(true);
 
@@ -101,7 +101,7 @@ function HuntForm() {
                 image: "",
                 text: "",
                 isUnlocked: false,
-                answer: "", // Added answer field
+                answer: "",
               },
             ],
           },
@@ -111,7 +111,7 @@ function HuntForm() {
     }
   };
 
-  // Rest of the functions remain the same...
+  
   const addClueToLocation = (locationIndex) => {
     const updatedLocations = [...formData.locations];
     updatedLocations[locationIndex] = {
