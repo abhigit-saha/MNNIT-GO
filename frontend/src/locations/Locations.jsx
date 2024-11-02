@@ -1,6 +1,6 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import LocationsPage from '../components/locationspage';
+import React from "react";
+import Navbar from "../components/Navbar";
+import LocationsPage from "../components/LocationsPage";
 
 function Locations() {
   return (

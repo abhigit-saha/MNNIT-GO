@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Timer from "./Timer";
 
 const HuntDetails = () => {
   const { id } = useParams();
   const [hunt, setHunt] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentClueIndex, setCurrentClueIndex] = useState(0);
-  const [userAnswer, setUserAnswer] = useState('');
+  const [userAnswer, setUserAnswer] = useState("");
   const [feedback, setFeedback] = useState(null);
   const [completed, setCompleted] = useState(false);
 
@@ -16,8 +17,12 @@ const HuntDetails = () => {
       try {
         const response = await axios.get(`http://localhost:8000/hunts/${id}`);
         setHunt(response.data);
+        if (localStorage.getItem("isCurrentlyRunning") !== "true") {
+          localStorage.setItem("timerStartTime", Date.now().toString());
+          localStorage.setItem("isCurrentlyRunning", "true");
+        }
       } catch (error) {
-        console.error('Error fetching hunt details:', error);
+        console.error("Error fetching hunt details:", error);
       } finally {
         setLoading(false);
       }
@@ -27,20 +32,26 @@ const HuntDetails = () => {
 
   const handleAnswerSubmit = () => {
     const currentClue = hunt.clues[currentClueIndex];
-    if (userAnswer.toLowerCase().trim() === currentClue.answer.toLowerCase().trim()) {
-      setFeedback({ type: 'success', message: 'Correct! Moving to next clue...' });
-      
+    if (
+      userAnswer.toLowerCase().trim() ===
+      currentClue.answer.toLowerCase().trim()
+    ) {
+      setFeedback({
+        type: "success",
+        message: "Correct! Moving to next clue...",
+      });
+
       if (currentClueIndex + 1 < hunt.clues.length) {
         setTimeout(() => {
-          setCurrentClueIndex(prev => prev + 1);
-          setUserAnswer('');
+          setCurrentClueIndex((prev) => prev + 1);
+          setUserAnswer("");
           setFeedback(null);
         }, 1500);
       } else {
         setCompleted(true);
       }
     } else {
-      setFeedback({ type: 'error', message: 'Incorrect answer. Try again!' });
+      setFeedback({ type: "error", message: "Incorrect answer. Try again!" });
     }
   };
 
@@ -53,18 +64,28 @@ const HuntDetails = () => {
   }
 
   return (
-    <div className="hunt-container">
+    <div className="hunt-container flex flex-col">
+      <Timer />
       <div className="hunt-card">
         <h1>{hunt.name}</h1>
-        
+
         <div className="image-container">
+<<<<<<< HEAD
           <img src={hunt.image} alt={hunt.name} />
+=======
+          <img
+            src={hunt.imageUrl || "/api/placeholder/600/400"}
+            alt={hunt.name}
+          />
+>>>>>>> aea28c15467c8f8a400b025f11b10a5285d1e238
         </div>
 
         {!completed ? (
           <div className="hunt-content">
             <div className="clue-section">
-              <h2>Clue {currentClueIndex + 1} of {hunt.clues.length}</h2>
+              <h2>
+                Clue {currentClueIndex + 1} of {hunt.clues.length}
+              </h2>
               <p className="clue-text">{hunt.clues[currentClueIndex].text}</p>
             </div>
 
@@ -85,9 +106,13 @@ const HuntDetails = () => {
             )}
 
             <div className="progress">
-              <div 
-                className="progress-bar" 
-                style={{ width: `${((currentClueIndex + 1) / hunt.clues.length) * 100}%` }}
+              <div
+                className="progress-bar"
+                style={{
+                  width: `${
+                    ((currentClueIndex + 1) / hunt.clues.length) * 100
+                  }%`,
+                }}
               ></div>
             </div>
           </div>
