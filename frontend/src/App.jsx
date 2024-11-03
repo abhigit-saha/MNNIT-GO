@@ -20,12 +20,7 @@ function ProtectedRoute({ children }) {
 
   return children;
 }
-
-import Hunts from "./components/Hunts.jsx";
-import Huntdetails from "./components/Huntdetails.jsx";
-import Locations from "./components/LocationsPage.jsx";
 import HuntForm from "./components/HuntForm.jsx";
-import Timer from "./components/Timer.jsx";
 function App() {
   return (
     <>
@@ -35,8 +30,22 @@ function App() {
         <Route path="/Sign Up" element={<Signup />} />
         <Route path="/locations" element={<Locations />} />
         <Route path="/hunts" element={<Hunts />} />
-        <Route path="/hunts/:id" element={<Huntdetails />} />
-        <Route path="/create" element={<HuntForm />} />
+        <Route
+          path="/hunts/:id"
+          element={
+            <ProtectedRoute>
+              <Huntdetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <ProtectedRoute>
+              <HuntForm />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/dashboard"
           element={

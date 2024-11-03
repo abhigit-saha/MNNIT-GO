@@ -48,14 +48,12 @@ const HuntDetails = () => {
       });
 
       if (currentClueIndex + 1 < currentLocation.clues.length) {
-        
         setTimeout(() => {
           setCurrentClueIndex((prev) => prev + 1);
           setUserAnswer("");
           setFeedback(null);
         }, 1500);
       } else if (currentLocationIndex + 1 < hunt.locations.length) {
-        
         setTimeout(() => {
           setCurrentLocationIndex((prev) => prev + 1);
           setCurrentClueIndex(0);
@@ -63,7 +61,6 @@ const HuntDetails = () => {
           setFeedback(null);
         }, 1500);
       } else {
-        
         setCompleted(true);
       }
     } else {
@@ -138,7 +135,6 @@ const HuntDetails = () => {
         )}
       </div>
 
-      
       <style>{`
         .hunt-container {
           min-height: 100vh;
@@ -249,6 +245,5 @@ const HuntDetails = () => {
     </div>
   );
 };
-   
 
 export default HuntDetails;
