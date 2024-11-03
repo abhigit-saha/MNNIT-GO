@@ -84,7 +84,7 @@ const Hunts = () => {
                             <p className="text-gray-600 mb-4 line-clamp-2">{hunt.description}</p>
                             <div className="flex justify-between items-center">
                                 <span className="text-sm text-gray-500">
-                                    {hunt.clues?.length || 0} Clues
+                                    {hunt.locations?.length || 0} Clues
                                 </span>
                                 <button
                                     className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"

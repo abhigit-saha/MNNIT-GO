@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Timer from "./Timer";
 
 const HuntDetails = () => {
   const { id } = useParams();
   const [hunt, setHunt] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentLocationIndex, setCurrentLocationIndex] = useState(0);
   const [currentClueIndex, setCurrentClueIndex] = useState(0);
-  const [userAnswer, setUserAnswer] = useState('');
+  const [userAnswer, setUserAnswer] = useState("");
   const [feedback, setFeedback] = useState(null);
   const [completed, setCompleted] = useState(false);
 
@@ -16,31 +18,53 @@ const HuntDetails = () => {
       try {
         const response = await axios.get(`http://localhost:8000/hunts/${id}`);
         setHunt(response.data);
+        if (localStorage.getItem("isCurrentlyRunning") !== "true") {
+          localStorage.setItem("timerStartTime", Date.now().toString());
+          localStorage.setItem("isCurrentlyRunning", "true");
+        }
       } catch (error) {
-        console.error('Error fetching hunt details:', error);
+        console.error("Error fetching hunt details:", error);
       } finally {
         setLoading(false);
       }
     };
     fetchHuntDetails();
+    return () => {
+      localStorage.removeItem("isCurrentlyRunning");
+    };
   }, [id]);
 
   const handleAnswerSubmit = () => {
-    const currentClue = hunt.clues[currentClueIndex];
-    if (userAnswer.toLowerCase().trim() === currentClue.answer.toLowerCase().trim()) {
-      setFeedback({ type: 'success', message: 'Correct! Moving to next clue...' });
-      
-      if (currentClueIndex + 1 < hunt.clues.length) {
+    const currentLocation = hunt.locations[currentLocationIndex];
+    const currentClue = currentLocation.clues[currentClueIndex];
+
+    if (
+      userAnswer.toLowerCase().trim() ===
+      currentClue.answer.toLowerCase().trim()
+    ) {
+      setFeedback({
+        type: "success",
+        message: "Correct! Moving to next clue...",
+      });
+
+      if (currentClueIndex + 1 < currentLocation.clues.length) {
         setTimeout(() => {
-          setCurrentClueIndex(prev => prev + 1);
-          setUserAnswer('');
+          setCurrentClueIndex((prev) => prev + 1);
+          setUserAnswer("");
+          setFeedback(null);
+        }, 1500);
+      } else if (currentLocationIndex + 1 < hunt.locations.length) {
+        setTimeout(() => {
+          setCurrentLocationIndex((prev) => prev + 1);
+          setCurrentClueIndex(0);
+          setUserAnswer("");
           setFeedback(null);
         }, 1500);
       } else {
         setCompleted(true);
       }
     } else {
-      setFeedback({ type: 'error', message: 'Incorrect answer. Try again!' });
+      setFeedback({ type: "error", message: "Incorrect answer. Try again!" });
     }
   };
 
@@ -52,20 +76,24 @@ const HuntDetails = () => {
     return <div className="not-found">Hunt not found</div>;
   }
 
+  const currentLocation = hunt.locations[currentLocationIndex];
+  const currentClue = currentLocation.clues[currentClueIndex];
+
   return (
-    <div className="hunt-container">
+    <div className="hunt-container flex flex-col">
+      <Timer />
       <div className="hunt-card">
         <h1>{hunt.name}</h1>
-        
+
         <div className="image-container">
-          <img src={hunt.imageUrl || "/api/placeholder/600/400"} alt={hunt.name} />
+          <img src={hunt.image} alt={hunt.name} />
         </div>
 
         {!completed ? (
           <div className="hunt-content">
             <div className="clue-section">
-              <h2>Clue {currentClueIndex + 1} of {hunt.clues.length}</h2>
-              <p className="clue-text">{hunt.clues[currentClueIndex].text}</p>
+              <h2>LOCATION: {currentLocation.name}</h2>
+              <p className="clue-text">Clue: {currentClue.text}</p>
             </div>
 
             <div className="answer-section">
@@ -85,9 +113,17 @@ const HuntDetails = () => {
             )}
 
             <div className="progress">
-              <div 
-                className="progress-bar" 
-                style={{ width: `${((currentClueIndex + 1) / hunt.clues.length) * 100}%` }}
+              <div
+                className="progress-bar"
+                style={{
+                  width: `${
+                    ((currentLocationIndex * currentLocation.clues.length +
+                      currentClueIndex +
+                      1) /
+                      (hunt.locations.length * currentLocation.clues.length)) *
+                    100
+                  }%`,
+                }}
               ></div>
             </div>
           </div>
@@ -141,6 +177,10 @@ const HuntDetails = () => {
           display: block;
         }
 
+        .location-section {
+          margin-bottom: 30px;
+        }
+
         .clue-section {
           background: #f7fafc;
           padding: 20px;
@@ -150,14 +190,14 @@ const HuntDetails = () => {
 
         h2 {
           color: #4a5568;
-          margin-bottom: 10px;
           font-size: 1.5em;
+          margin-bottom: 10px;
         }
 
         .clue-text {
           font-size: 1.2em;
-          line-height: 1.6;
           color: #2d3748;
+          margin-bottom: 15px;
         }
 
         .answer-section {
@@ -171,37 +211,20 @@ const HuntDetails = () => {
           padding: 12px 20px;
           border: 2px solid #e2e8f0;
           border-radius: 8px;
-          font-size: 1em;
-          transition: border-color 0.3s ease;
-        }
-
-        input:focus {
-          outline: none;
-          border-color: #4299e1;
         }
 
         button {
           background: #4299e1;
           color: white;
-          border: none;
           padding: 12px 24px;
           border-radius: 8px;
-          cursor: pointer;
-          font-size: 1em;
           font-weight: bold;
-          transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-          background: #3182ce;
         }
 
         .feedback {
           padding: 15px;
           border-radius: 8px;
-          margin: 20px 0;
           text-align: center;
-          font-weight: 500;
         }
 
         .feedback.success {
@@ -214,63 +237,9 @@ const HuntDetails = () => {
           color: #9b2c2c;
         }
 
-        .progress {
-          background: #edf2f7;
-          height: 8px;
-          border-radius: 4px;
-          overflow: hidden;
-          margin-top: 20px;
-        }
-
-        .progress-bar {
-          height: 100%;
-          background: linear-gradient(90deg, #4299e1, #667eea);
-          transition: width 0.3s ease;
-        }
-
         .completion-message {
           text-align: center;
           padding: 40px 20px;
-        }
-
-        .completion-message h2 {
-          color: #2d3748;
-          font-size: 2em;
-          margin-bottom: 15px;
-        }
-
-        .completion-message p {
-          color: #4a5568;
-          font-size: 1.2em;
-        }
-
-        .loading, .not-found {
-          text-align: center;
-          padding: 40px;
-          font-size: 1.5em;
-          color: #4a5568;
-        }
-
-        @media (max-width: 768px) {
-          .hunt-card {
-            padding: 20px;
-          }
-
-          .image-container img {
-            height: 300px;
-          }
-
-          .answer-section {
-            flex-direction: column;
-          }
-
-          button {
-            width: 100%;
-          }
-
-          h1 {
-            font-size: 2em;
-          }
         }
       `}</style>
     </div>

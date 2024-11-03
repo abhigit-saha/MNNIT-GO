@@ -1,6 +1,6 @@
 // App.js
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Router, Routes, Navigate } from "react-router-dom";
 import Home from "./home/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -20,7 +20,7 @@ function ProtectedRoute({ children }) {
 
   return children;
 }
-
+import HuntForm from "./components/HuntForm.jsx";
 function App() {
   return (
     <>
@@ -30,14 +30,29 @@ function App() {
         <Route path="/Sign Up" element={<Signup />} />
         <Route path="/locations" element={<Locations />} />
         <Route path="/hunts" element={<Hunts />} />
-        <Route path="/hunts/:id" element={<Huntdetails />} />
-        <Route 
-          path="/dashboard" 
+        <Route
+          path="/hunts/:id"
+          element={
+            <ProtectedRoute>
+              <Huntdetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <ProtectedRoute>
+              <HuntForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard /> {/* Dashboard protected by ProtectedRoute */}
             </ProtectedRoute>
-          } 
+          }
         />
       </Routes>
       <Toaster />

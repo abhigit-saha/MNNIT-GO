@@ -1,118 +1,139 @@
+[
+    {
+      "name": "Administrative Building Quest",
+      "title": "The Director's Challenge",
+      "description": "Navigate through the historic Administrative Building of MNNIT, discovering its architectural secrets and rich heritage through challenging puzzles.",
+      "image": "/admin.jpg",
+      "difficulty": "Medium",
+      "locations": [
+        {
+          "name": "Main Entrance",
+          "clues": [
+            {
+              "image":"/admin.jpg",
+              "text": "Add the digits of the year when MNNIT got its NIT status. Divide by 2 to proceed.",
+              "answer": "11",
+              "isUnlocked": false
+            }
+           
+          ]
+        },
+        {
+          "name": "Director's Office Wing",
+          "clues":[
+            {
+              "image":"/admin.jpg",
+              "text":"How many directors' photos are displayed in golden frames on the heritage wall?",
+              "answer":"7",
+              "isUnlocked":false
 
-     [
-      {
-        "name": "Historic Downtown Adventure",
-        "title": "The Lost Merchant's Tale",
-        "description": "Explore the historic downtown area to uncover the story of a mysterious 19th-century merchant and their hidden legacy.",
-        "image": "downtown-historic.jpg",
-        "difficulty": "Medium",
-        "locations": [
-          {
-            "name": "Old Town Square",
-            "hint": "Where citizens once gathered to hear important announcements, a clock still keeps ancient time."
-          },
-          {
-            "name": "Merchant's Building",
-            "hint": "Look for the building with iron shutters and a date stone from 1875."
-          },
-          {
-            "name": "Harbor District",
-            "hint": "The old lighthouse holds more secrets than it shows."
-          }
-        ],
-        "clues": [
-          {
-            "text": "I have four faces but cannot see, I have hands but cannot feel, I tell stories of what used to be. What am I?",
-            "answer": "clock tower",
-            "isUnlocked": false
-          },
-          {
-            "text": "Behind these iron wings, numbers tell a tale. Find the sum of the building's birth year.",
-            "answer": "21",
-            "isUnlocked": false
-          },
-          {
-            "text": "Count the steps to reach the light, divide by compass points, what number comes to sight?",
-            "answer": "12",
-            "isUnlocked": false
+
           }
         ]
-      },
-      {
-        "name": "Campus Mystery",
-        "title": "The Professor's Puzzle",
-        "description": "A beloved professor has left a series of intellectual challenges across campus. Solve them to unlock a special message.",
-        "image": "university-campus.jpg",
-        "difficulty": "Hard",
-        "locations": [
-          {
-            "name": "Library Reading Room",
-            "hint": "Search among the oldest books in the reference section."
-          },
-          {
-            "name": "Physics Building",
-            "hint": "The pendulum holds the key to time."
-          },
-          {
-            "name": "Botanical Gardens",
-            "hint": "Count the rings of knowledge in the oldest tree."
-          }
-        ],
-        "clues": [
-          {
-            "text": "First edition dates hold the key. Add the last two digits of each year you see.",
-            "answer": "42",
-            "isUnlocked": false
-          },
-          {
-            "text": "The pendulum swings in perfect time, every tenth swing reveals the rhyme.",
-            "answer": "gravity",
-            "isUnlocked": false
-          },
-          {
-            "text": "Ancient guardian of botanical lore, my rings tell stories of years before.",
-            "answer": "oak tree",
-            "isUnlocked": false
-          }
-        ]
-      },
-      {
-        "name": "Park Adventure",
-        "title": "Nature's Secret Code",
-        "description": "A family-friendly adventure through the city park, discovering nature's hidden patterns and secrets.",
-        "image": "city-park.jpg",
-        "difficulty": "Easy",
-        "locations": [
-          {
-            "name": "Duck Pond",
-            "hint": "Watch the pattern of the fountain's spray."
-          },
-          {
-            "name": "Butterfly Garden",
-            "hint": "Count the colors in the rainbow bed of flowers."
-          },
-          {
-            "name": "Ancient Oak",
-            "hint": "Look for the plaque that tells a story."
-          }
-        ],
-        "clues": [
-          {
-            "text": "Water dances in the air, count the spurts with special care.",
-            "answer": "7",
-            "isUnlocked": false
-          },
-          {
-            "text": "Colors of the rainbow bright, in these flowers take delight.",
-            "answer": "violet",
-            "isUnlocked": false
-          },
-          {
-            "text": "How many acorns can you spot on the memorial plaque?",
-            "answer": "5",
-            "isUnlocked": false
-          }
-        ]
-      }
-    ]
+          
   
+          
+        },
+        {
+          "name": "Conference Hall",
+          "clues":[
+            {
+              "image":"/admin.jpg",
+              "text":"Count the pillars at the main entrance, multiply by windows on the front facade,divide by 4",
+              "answer":"6",
+              "isUnlocked":false
+
+
+          }
+        ]
+          
+        }
+      ]
+     
+    },
+    {
+      "name": "Cafe69 Adventure",
+      "title": "Culinary Code Quest",
+      "description": "Explore MNNIT's favorite hangout spot, Cafe69, where food meets fun in this exciting treasure hunt.",
+      "image": "cafe69.jpg",
+      "difficulty": "Easy",
+      "locations": [
+        {
+          "name": "Menu Wall",
+          "clues":[
+            {
+              "image":"cafe69.jpg",
+              "text": "What's the price of the most popular combo meal divided by 10?",
+              "answer": "15",
+              "isUnlocked": false
+            }
+          ]
+        },
+        {
+          "name": "Seating Area",
+          "clues":[
+            {
+              "image":"cafe69.jpg",
+               "text": "Count the number of ceiling fans in the main seating area, multiply by 2.",
+               "answer": "16",
+               "isUnlocked": false
+          }
+        ]
+        },
+        {
+          "name": "Garden Section",
+          "clues":[
+            {
+              "image":"cafe69.jpg",
+              "text": "How many stone benches are there in the garden section?",
+               "answer": "4",
+               "isUnlocked": false
+            }
+          ]
+        }
+      ]
+     
+    },
+    {
+      "name": "Central Library Mystery",
+      "title": "Knowledge Navigator",
+      "description": "Dive into the vast repository of knowledge at MNNIT's Central Library, where books hold more than just information.",
+      "image": "central-library.jpg",
+      "difficulty": "Hard",
+      "locations": [
+        {
+          "name": "Reference Section",
+          "clues":[{
+            "image":"central-library.jpg",
+            "text": "On the first bookshelf of Engineering Mathematics, add the edition numbers of all Kreyszig books on display.",
+          "answer": "23",
+          "isUnlocked": false
+          }
+        ]
+        },
+        {
+          "name": "Digital Library",
+          "clues":[
+            {
+              "image":"central-library.jpg",
+              "text": "What floor number has the IEEE journal section? Multiply by the number of computer labs.",
+              "answer": "8",
+              "isUnlocked": false
+            }
+          ]
+        },
+        {
+          "name": "Reading Hall",
+          "clues":[
+            {
+              "image":"central-library.jpg",
+              "text": "Count the number of ceiling lights in the main reading hall, divide by the number of emergency exits.",
+              "answer": "12",
+              "isUnlocked": false
+            }
+          ]
+        }
+      ]
+     
+    }
+  ]

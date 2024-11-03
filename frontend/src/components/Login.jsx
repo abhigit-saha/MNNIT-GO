@@ -31,9 +31,7 @@ const Login = () => {
 
         // Store both user data and token in localStorage
         localStorage.setItem("User", JSON.stringify(responseData.user));
-        localStorage.setItem("token", responseData.token); // store token
-
-        navigate("/dashboard", { replace: true });
+        navigate("/dashboard" , {replace:true})
       } else {
         toast.error(responseData.message || "An error occurred");
       }
