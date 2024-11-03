@@ -1,0 +1,108 @@
+/* Navbar Container */
+.navbar-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sticky-navbar {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Inner Navbar Styling */
+  .navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px;
+  }
+  
+  .navbar-left {
+    flex: 1;
+  }
+  
+  .navbar-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Logo/Brand */
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 4px 12px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom 0.3s;
+  }
+  
+  .navbar-brand:hover {
+    color: #ccc;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  /* Center Navigation Links */
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 4px 8px;
+    font-size: 16px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #ccc;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  /* Search and Login Button */
+  .icon-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  }
+  
+  .icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .icon {
+    height: 24px;
+    width: 24px;
+    color: white;
+  }
+  
+  .login-button {
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  

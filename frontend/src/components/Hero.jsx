@@ -1,58 +1,53 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Hero() {
-  useEffect(() => {
-    const script1 = document.createElement('script');
-    script1.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
-    document.body.appendChild(script1);
+  const navigate = useNavigate(); // Initialize the navigate function
 
-    const script2 = document.createElement('script');
-    script2.src = 'https://unpkg.com/split-type';
-    document.body.appendChild(script2);
-
-    script2.onload = () => {
-      if (window.SplitType && window.gsap) {
-        const animatedTextElement = document.getElementById('animatedText');
-        const split = new window.SplitType(animatedTextElement, { types: 'words, chars' });
-
-        const animateText = () => {
-          window.gsap.set(split.chars, { opacity: 0, y: 150 });
-          window.gsap.fromTo(
-            split.chars,
-            { opacity: 0, y: 150 },
-            {
-              duration: 1,
-              opacity: 1,
-              y: 0,
-              stagger: 0.05,
-              onComplete: () => {
-                window.gsap.to(split.chars, { opacity: 0, delay: 1, duration: 0.5 });
-              }
-            }
-          );
-        };
-
-        animateText();
-        const intervalId = setInterval(animateText, 5000);
-
-        return () => {
-          clearInterval(intervalId);
-          document.body.removeChild(script1);
-          document.body.removeChild(script2);
-        };
-      }
-    };
-  }, []);
+  const handleGetStarted = () => {
+    navigate('/login'); // Redirect to the login page
+  };
 
   return (
-    <div className="w-screen h-screen bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: "url('/shbg.jpg')" }}>
-      <div className="absolute left-4 md:left-[90px] top-[22vh] max-w-full md:max-w-[80%] px-4">
-        <div className="w-full">
-          <h1 id="animatedText" className="text-white text-2xl sm:text-3xl md:text-5xl font-serif leading-relaxed break-words m-3">
-            Step by Step, <br />
-            Clue by Clue, <br />
-            the campus reveals its secret. <br />
-          </h1>
+    <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row items-center justify-between p-8 md:p-16">
+      {/* Left Side - Text Content */}
+      <div className="text-left w-full md:w-1/2 lg:w-2/5 space-y-6">
+        <span className="text-xs font-semibold text-green-600 uppercase tracking-wide">NEW</span>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+          College <span className="text-black font-extrabold">Hunting</span> for <span className="text-black font-extrabold">everyone</span>.
+        </h1>
+        <p className="text-lg text-gray-700">
+          Meet <span className="font-bold text-black">scAvengers</span>, the hunting platform for everyone. Have fun in College!
+        </p>
+        <button 
+          onClick={handleGetStarted} // Add onClick handler
+          className="mt-4 px-6 py-3 bg-black text-white font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition"
+        >
+          Get Started
+        </button>
+        {/* Additional badges if needed */}
+        <div className="flex space-x-2 mt-4">
+          <span className="text-xs font-medium text-gray-500">Powered by top universities</span>
+          {/* Example icons can be added here */}
+        </div>
+      </div>
+
+      {/* Right Side - Events Container */}
+      <div className="bg-white w-full md:w-1/2 lg:w-2/5 mt-10 md:mt-0 p-8 rounded-lg shadow-lg text-gray-800 border-2 border-black">
+        <h2 className="text-xl font-semibold mb-4">Upcoming Events</h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold text-lg">Join us for:</h3>
+            <p className="text-sm text-gray-600">Explore various college resources and events.</p>
+          </div>
+          <div className="border-t pt-4">
+            <h3 className="font-semibold text-lg">Available Events</h3>
+            <div className="grid grid-cols-1 gap-2 mt-2 text-center">
+              <div className="p-2 rounded-lg bg-gray-100">Central Library</div>
+              <div className="p-2 rounded-lg bg-gray-100">Dean Academics</div>
+              <div className="p-2 rounded-lg bg-gray-100">MP Hall</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
