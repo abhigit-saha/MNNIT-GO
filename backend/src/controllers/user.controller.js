@@ -1,9 +1,9 @@
+// Import necessary modules
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
-import { OAuth2Client } from 'google-auth-library';
+import jwt from "jsonwebtoken"; // Import JWT library
 
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
+// Sign-up controller
 export const Signup = async (req, res) => {
   try {
     const { fullname, email, password } = req.body;
@@ -27,11 +27,12 @@ export const Signup = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log("Error:" + error.message);
+    console.log("Error:", error.message);
     res.status(500).json({ message: "Server error" });
   }
 };
 
+// Login controller with JWT generation
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -39,55 +40,59 @@ export const login = async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
+
     const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
+
+    // Generate JWT with user ID
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
     res.status(200).json({
-      message: "Login successful",
+      message: "Login Successful",
       user: {
-        _id: user.id,
+        _id: user._id,
         fullname: user.fullname,
         email: user.email,
       },
+      token, // Send token to client
     });
   } catch (error) {
-    console.log("Error:" + error.message);
+    console.log("Error:", error.message);
     res.status(500).json({ message: "Internal server error" });
   }
 };
 
-export const googleSignIn = async (req, res) => {
-  const { token } = req.body;
-  try {
-    const ticket = await client.verifyIdToken({
-      idToken: token,
-      audience: process.env.GOOGLE_CLIENT_ID,
-    });
-    const payload = ticket.getPayload();
+// Middleware to authenticate JWT
+export const authenticateToken = (req, res, next) => {
+  const token = req.headers["authorization"]?.split(" ")[1]; // Get token from header
+  if (!token) {
+    return res.status(403).json({ message: "Access denied" });
+  }
 
-    let user = await User.findOne({ email: payload.email });
-    if (!user) {
-      
-      user = new User({
-        fullname: payload.name,
-        email: payload.email,
-        password: null, 
-        picture: payload.picture,
-      });
-      await user.save();
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: "Invalid or expired token" });
     }
+    req.user = user;
+    next();
+  });
+};
 
-    res.status(200).json({
-      message: "Google Sign-In successful",
-      user: {
-        _id: user.id,
-        fullname: user.fullname,
-        email: user.email,
-      },
-    });
+// Protected route for user dashboard
+export const getUserDashboard = async (req, res) => {
+  try {
+    const userId = req.user.id; // Get user ID from the token
+    const user = await User.findById(userId).select("-password"); // Exclude password
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ user });
   } catch (error) {
-    console.log("Error:" + error.message);
-    res.status(400).json({ message: "Invalid Google token" });
+    console.log("Error:", error.message);
+    res.status(500).json({ message: "Server error" });
   }
 };

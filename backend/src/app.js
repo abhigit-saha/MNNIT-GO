@@ -15,7 +15,7 @@ const server = http.createServer(app);
 initializeSocket(server); 
 app.use(cors())
 // app.use(
-//   cors({
+//   cors({  frontend 5173
 //     origin: process.env.CORS_ORIGIN,
 //     credentials: true,
 //   })
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public")); 
 app.use(cookieParser());
 
-app.use("/user",userroute)
+app.use("/user",userroute)   // this is for the login and signup not the dashboard
 app.use("/locations",locationrouter)
 app.use("/hunts",huntrouter)
 

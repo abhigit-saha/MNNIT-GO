@@ -1,9 +1,15 @@
 import express from "express";
-import { Signup, login, googleSignIn } from "../controllers/user.controller.js";
+import {
+  Signup,
+  login,
+  getUserDashboard,
+  authenticateToken,
+} from "../controllers/user.controller.js";
+
 const router = express.Router();
 
-router.post("/Signup", Signup);
+router.post("/signup", Signup);
 router.post("/login", login);
-router.post("/google-signin", googleSignIn); 
+router.get("/dashboard", authenticateToken, getUserDashboard); // Secure dashboard with token verification
 
 export default router;

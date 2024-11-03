@@ -11,7 +11,7 @@ function HuntForm() {
     title: "",
     description: "",
     image: "",
-    difficulty: "medium",
+    difficulty: "",
     locations: [],
   });
 
@@ -28,7 +28,6 @@ function HuntForm() {
     });
   };
 
-  
   const handleHuntImageUpload = async (file) => {
     setIsUploadingHuntImage(true);
 
@@ -111,7 +110,6 @@ function HuntForm() {
     }
   };
 
-  
   const addClueToLocation = (locationIndex) => {
     const updatedLocations = [...formData.locations];
     updatedLocations[locationIndex] = {
@@ -167,7 +165,7 @@ function HuntForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // try {
     //   const response = await axios.post(
@@ -183,7 +181,17 @@ function HuntForm() {
     //   });
     // } catch (error) {
     //   console.error("Error creating hunt:", error);
+
     // }
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/hunts",
+        formData
+      );
+      console.log("Hunt created:", response.data);
+    } catch (error) {
+      console.error("Error creating hunt:", error);
+    }
     alert(JSON.stringify(formData));
   };
   return (
@@ -193,7 +201,10 @@ function HuntForm() {
           Create New Hunt
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={async (e) => await handleSubmit(e)}
+          className="space-y-4"
+        >
           {/* Basic hunt info fields */}
           <div className="form-control">
             <label className="label">
@@ -248,9 +259,9 @@ function HuntForm() {
               className="select select-bordered w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             >
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
             </select>
           </div>
 
