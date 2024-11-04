@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import HuntForm from "./HuntForm";
+import Layout from "./DashboardComp/layout";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -53,6 +54,7 @@ const Dashboard = () => {
   }
 
   return (
+    <Layout>
     <div className="dashboard min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
       <h1 className="text-3xl font-bold text-blue-600 mb-4">
         Welcome to Your Dashboard, {user.fullname}!
@@ -84,6 +86,7 @@ const Dashboard = () => {
       <HuntForm></HuntForm>
       <button onClick={logouthandler} className="bg-red-800">Logout</button>
     </div>
+    </Layout>
   );
 };
 

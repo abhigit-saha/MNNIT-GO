@@ -1,33 +1,30 @@
+// app.js
 import express from "express";
-
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { initializeSocket } from "./controllers/leaderboard.js";
-import http from 'http'
-import userroute from "./routes/user.routes.js"
-import locationrouter from "./routes/location.routes.js"
-import huntrouter from "./routes/hunt.routes.js"
-
-
+import http from 'http';
+import userroute from "./routes/user.routes.js";
+import locationrouter from "./routes/location.routes.js";
+import huntrouter from "./routes/hunt.routes.js";
+import { initializeHuntSocket } from "./controllers/unofficialHunts.js"; // Import the room logic
 
 const app = express();
-const server = http.createServer(app); 
-initializeSocket(server); 
-app.use(cors())
-// app.use(
-//   cors({  frontend 5173
-//     origin: process.env.CORS_ORIGIN,
-//     credentials: true,
-//   })
-// );
+const server = http.createServer(app);
 
+// Initialize Socket.io for hunts
+initializeHuntSocket(server); 
+
+// Middleware
+app.use(cors());
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public")); 
 app.use(cookieParser());
 
-app.use("/user",userroute)   // this is for the login and signup not the dashboard
-app.use("/locations",locationrouter)
-app.use("/hunts",huntrouter)
+// Routes
+app.use("/user", userroute);
+app.use("/locations", locationrouter);
+app.use("/hunts", huntrouter);
 
-export { app };
+// Export the server for use in index.js
+export { app, server };

@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard"; // Import the Dashboard component
 import Locations from "./locations/Locations";
 import Hunts from "./components/Hunts";
+import UnoffHunts from "./components/unoffhunts";
 import Huntdetails from "./components/Huntdetails";
 import { Toaster } from "react-hot-toast";
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/Sign Up" element={<Signup />} />
         <Route path="/locations" element={<Locations />} />
         <Route path="/hunts" element={<Hunts />} />
+        <Route path='/unoffhunts' element={<UnoffHunts />} />
         <Route
           path="/hunts/:id"
           element={
