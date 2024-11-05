@@ -51,10 +51,11 @@ const ReadQr = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-blue-600 mb-2">QR Scanner</h2>
-          <p className="text-gray-600">Scan any QR code to get started</p>
-        </div>
+        {/* <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-blue-600 mb-2">
+            Scan Qr Code
+          </h2>
+        </div> */}
 
         <div className="bg-white rounded-xl shadow-lg p-6 space-y-6">
           <button

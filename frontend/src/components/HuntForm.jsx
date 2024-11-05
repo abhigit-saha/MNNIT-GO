@@ -5,6 +5,8 @@ import { json } from "react-router-dom";
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 import Timer from "./Timer";
+import QrCode from "qrcode";
+import Button from "./utils/Button";
 function HuntForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -50,6 +52,27 @@ function HuntForm() {
       console.error("Error uploading hunt image:", error);
     } finally {
       setIsUploadingHuntImage(false);
+    }
+  };
+
+  const generateQrCode = async (answer) => {
+    try {
+      // Generate the QR code as a data URL
+      const dataUrl = await QrCode.toDataURL(answer);
+
+      // Create an <a> element and set the download attribute
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "Clue.png"; // File name for the download
+
+      // Trigger download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      alert("Clue QR code successfully generated and downloaded.");
+    } catch (error) {
+      console.error("Error generating QR code:", error);
     }
   };
 
@@ -101,6 +124,7 @@ function HuntForm() {
                 text: "",
                 isUnlocked: false,
                 answer: "",
+                isQr: false,
               },
             ],
           },
@@ -141,7 +165,19 @@ function HuntForm() {
       locations: updatedLocations,
     });
   };
-
+  const toggleIsQr = (locationIndex, clueIndex) => {
+    setFormData((prevData) => {
+      const updatedLocations = [...prevData.locations];
+      updatedLocations[locationIndex].clues[clueIndex] = {
+        ...updatedLocations[locationIndex].clues[clueIndex],
+        isQr: !updatedLocations[locationIndex].clues[clueIndex].isQr,
+      };
+      return {
+        ...prevData,
+        locations: updatedLocations,
+      };
+    });
+  };
   const removeLocation = (indexToRemove) => {
     setFormData({
       ...formData,
@@ -381,6 +417,13 @@ function HuntForm() {
                           >
                             Remove
                           </button>
+                          <button
+                            type="button"
+                            onClick={() => toggleIsQr(locationIndex, clueIndex)}
+                            className="text-blue-500 hover:text-blue-700 text-sm"
+                          >
+                            {clue.isQr ? "QR Enabled" : "Enable QR"}
+                          </button>
                         </div>
 
                         <div className="space-y-3">
@@ -483,6 +526,14 @@ function HuntForm() {
                               required
                             />
                           </div>
+                          {clue.isQr && (
+                            <div className="w-fit">
+                              <Button
+                                text="Generate Qr"
+                                handleClick={() => generateQrCode(clue.answer)}
+                              />
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
