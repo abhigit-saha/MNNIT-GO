@@ -13,7 +13,7 @@ function HuntForm() {
     title: "",
     description: "",
     image: "",
-    difficulty: "",
+    difficulty: "Easy",
     locations: [],
   });
 
