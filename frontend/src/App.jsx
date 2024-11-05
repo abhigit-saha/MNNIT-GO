@@ -9,6 +9,7 @@ import Locations from "./locations/Locations";
 import Hunts from "./components/Hunts";
 import UnoffHunts from "./components/unoffhunts";
 import Huntdetails from "./components/Huntdetails";
+import ReadQr from "./components/ReadQr";
 import { Toaster } from "react-hot-toast";
 
 // Protected Route Component
@@ -28,10 +29,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Sign Up" element={<Signup />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/locations" element={<Locations />} />
         <Route path="/hunts" element={<Hunts />} />
-        <Route path='/unoffhunts' element={<UnoffHunts />} />
+        <Route path="/unoffhunts" element={<UnoffHunts />} />
+        <Route path="/readqr" element={<ReadQr />} />
         <Route
           path="/hunts/:id"
           element={
