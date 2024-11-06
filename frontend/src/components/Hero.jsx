@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Hero() {
   const navigate = useNavigate(); // Initialize the navigate function
@@ -43,9 +44,19 @@ function Hero() {
           <div className="border-t pt-4">
             <h3 className="font-semibold text-lg">Available Events</h3>
             <div className="grid grid-cols-1 gap-2 mt-2 text-center">
+              <Link
+              to='/hunts/6725d24bca4da6131cffda4c'
+              >
               <div className="p-2 rounded-lg bg-gray-100">Central Library</div>
-              <div className="p-2 rounded-lg bg-gray-100">Dean Academics</div>
-              <div className="p-2 rounded-lg bg-gray-100">MP Hall</div>
+              </Link>
+              <Link
+              to='/hunts/6725d24bca4da6131cffda4a'>
+              <div className="p-2 rounded-lg bg-gray-100">Admin Building</div>
+              </Link>
+              <Link
+              to='/hunts/6725d24bca4da6131cffda4b'>
+              <div className="p-2 rounded-lg bg-gray-100">Cafe 96</div>
+              </Link>
             </div>
           </div>
         </div>
