@@ -7,7 +7,7 @@ function Premium() {
 
   // Function to handle payment demo
   const handlePayment = () => {
-    // Demo payment logic 
+    
     alert("Payment Demo - Razorpay Integration Here");
     // After payment is successful
     setIsPremium(true);

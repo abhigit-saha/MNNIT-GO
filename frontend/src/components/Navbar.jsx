@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 function Navbar() {
+  
+  
+
   const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
@@ -66,13 +70,16 @@ function Navbar() {
               </svg>
             </button>
 
-            {/* Login Button */}
+          
+
+           
             <Link
               to="/login"
               className="px-4 py-2 rounded-full text-white border border-[#ff3d71] bg-[#ff3d71] hover:bg-transparent hover:text-[#ff3d71] transition-all duration-300"
             >
               Login
             </Link>
+
           </div>
         </div>
       </div>

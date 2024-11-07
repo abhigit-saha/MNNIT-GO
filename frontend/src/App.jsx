@@ -12,6 +12,8 @@ import Huntdetails from "./components/Huntdetails";
 import ReadQr from "./components/ReadQr";
 import { Toaster } from "react-hot-toast";
 import Premium from './components/Premium.jsx'
+import Awards from './components/Awards.jsx'
+
 
 // Protected Route Component
 function ProtectedRoute({ children }) {
@@ -26,6 +28,8 @@ function ProtectedRoute({ children }) {
 import HuntForm from "./components/HuntForm.jsx";
 import Navbar from "./components/Navbar.jsx";
 function App() {
+  
+  
   return (
     <>
       <Navbar />
@@ -38,6 +42,7 @@ function App() {
         <Route path="/unoffhunts" element={<UnoffHunts />} />
         <Route path="/readqr" element={<ReadQr />} />
         <Route path="/premium" element={<Premium />} />
+        <Route path="/awards" element={<Awards />} />
         <Route
           path="/hunts/:id"
           element={
