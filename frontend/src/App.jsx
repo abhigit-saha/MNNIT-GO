@@ -28,6 +28,7 @@ function ProtectedRoute({ children }) {
 import HuntForm from "./components/HuntForm.jsx";
 import Navbar from "./components/Navbar.jsx";
 function App() {
+  const User=localStorage.getItem("User")
   
   
   return (
@@ -42,7 +43,7 @@ function App() {
         <Route path="/unoffhunts" element={<UnoffHunts />} />
         <Route path="/readqr" element={<ReadQr />} />
         <Route path="/premium" element={<Premium />} />
-        <Route path="/awards" element={<Awards />} />
+        <Route path="/awards" element={<Awards userI={User} />} />
         <Route
           path="/hunts/:id"
           element={

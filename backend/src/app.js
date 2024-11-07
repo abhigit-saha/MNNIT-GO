@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use("/user", userroute);
 app.use("/locations", locationrouter);
 app.use("/hunts", huntrouter);
-app.use("/awards", couponrouter);
+app.use("/coupon", couponrouter);
 
 
 
