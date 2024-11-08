@@ -24,7 +24,7 @@ function Premium() {
         <div className=" max-w-lg bg-white rounded-lg shadow-lg p-6 space-y-4">
           <h2 className="text-xl font-semibold text-yellow-600">Upgrade to Premium</h2>
           <p className="text-gray-600 mb-4">
-            Unlock exclusive features like premium hunts, enhanced visibility, and more.
+            Unlock exclusive features like creating hunts, enhanced visibility, and more.
           </p>
           <button 
             className="w-full py-3 bg-yellow-500 text-white font-semibold rounded-md hover:bg-yellow-600 transition duration-300"

@@ -18,8 +18,12 @@ function Hero() {
           College <span className="text-black font-extrabold">Hunting</span> for <span className="text-black font-extrabold">everyone</span>.
         </h1>
         <p className="text-lg text-gray-700">
-          Meet <span className="font-bold text-black">scAvengers</span>, the hunting platform for everyone. Have fun in College!
-        </p>
+          Meet <span className="font-bold text-black">scAvengers</span>, the hunting platform for everyone. Have fun in College and
+         <span className="font-bold text-white bg-gradient-to-r from-yellow-400 to-red-500 px-2 py-1 rounded-md shadow-lg animate-pulse">
+            Claim Offers
+           </span>
+             too!
+             </p>
         <button 
           onClick={handleGetStarted} // Add onClick handler
           className="mt-4 px-6 py-3 bg-black text-white font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition"
