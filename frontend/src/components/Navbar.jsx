@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 function Navbar() {
+  
+  
+
   const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
@@ -17,8 +21,8 @@ function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out bg-white ${
-        sticky ? 'shadow-lg' : 'bg-white/80'
+      className={` top-0 w-full transition-all duration-300 ease-in-out ${
+        sticky ? 'shadow-md' : 'bg-transparent'
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-4">
@@ -33,19 +37,17 @@ function Navbar() {
             </Link>
           </div>
 
-          {/* Navigation Links Wrapper with Rounded Border */}
-          <div className="hidden md:flex flex-1 justify-center">
-            <div className="flex items-center space-x-6 border-2 border-black rounded-full px-4 py-1">
-              {["Home", "Locations", "Hunts", "Portfolio", "About"].map((item, index) => (
-                <Link
-                  key={index}
-                  to={`/${item.toLowerCase()}`}
-                  className="text-black hover:text-[#f555e0] transition duration-300 hover:bg-yellow-300 rounded-full px-2 py-1"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
+          {/* Navigation Links */}
+          <div className="flex items-center space-x-6">
+            {["Home", "Locations", "Hunts", "Portfolio", "About","Premium"].map((item, index) => (
+              <Link
+                key={index}
+                to={`/${item.toLowerCase()}`}
+                className="text-black hover:text-[#f555e0] transition duration-300 hover:bg-yellow-300 rounded-full px-2 py-1"
+              >
+                {item}
+              </Link>
+            ))}
           </div>
 
           {/* Right Section (Search and Login) */}
@@ -68,13 +70,16 @@ function Navbar() {
               </svg>
             </button>
 
-            {/* Login Button */}
+          
+
+           
             <Link
               to="/login"
               className="px-4 py-2 rounded-full text-white border border-[#ff3d71] bg-[#ff3d71] hover:bg-transparent hover:text-[#ff3d71] transition-all duration-300"
             >
               Login
             </Link>
+
           </div>
         </div>
       </div>

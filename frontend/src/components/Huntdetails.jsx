@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Timer from "./Timer";
 
 const HuntDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // for navigation
   const [hunt, setHunt] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentLocationIndex, setCurrentLocationIndex] = useState(0);
@@ -33,6 +34,14 @@ const HuntDetails = () => {
       localStorage.removeItem("isCurrentlyRunning");
     };
   }, [id]);
+
+  useEffect(() => {
+    if (completed) {
+      setTimeout(() => {
+        navigate("/awards"); // redirect to Awards component
+      }, 1500);
+    }
+  }, [completed, navigate]);
 
   const handleAnswerSubmit = () => {
     const currentLocation = hunt.locations[currentLocationIndex];

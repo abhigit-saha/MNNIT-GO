@@ -7,6 +7,7 @@ import userroute from "./routes/user.routes.js";
 import locationrouter from "./routes/location.routes.js";
 import huntrouter from "./routes/hunt.routes.js";
 import { initializeHuntSocket } from "./controllers/unofficialHunts.js"; // Import the room logic
+import couponrouter from "./routes/coupon.routes.js"
 
 const app = express();
 const server = http.createServer(app);
@@ -30,6 +31,9 @@ app.use(cookieParser());
 app.use("/user", userroute);
 app.use("/locations", locationrouter);
 app.use("/hunts", huntrouter);
+app.use("/coupon", couponrouter);
+
+
 
 // Export the server for use in index.js
 export { app, server };

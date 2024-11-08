@@ -9,7 +9,7 @@ function Signup() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors },          
   } = useForm();
 
   const navigate = useNavigate();
