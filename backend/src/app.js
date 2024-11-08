@@ -2,7 +2,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import http from 'http';
+import http from "http";
 import userroute from "./routes/user.routes.js";
 import locationrouter from "./routes/location.routes.js";
 import huntrouter from "./routes/hunt.routes.js";
@@ -13,13 +13,18 @@ const app = express();
 const server = http.createServer(app);
 
 // Initialize Socket.io for hunts
-initializeHuntSocket(server); 
+initializeHuntSocket(server);
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // your frontend URL
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
-app.use(express.static("public")); 
+app.use(express.static("public"));
 app.use(cookieParser());
 
 // Routes

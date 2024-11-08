@@ -15,25 +15,35 @@ function Signup() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    const userInfo = {
-      fullname: data.fullname,
-      email: data.email,
-      password: data.password,
-    };
-    await axios
-      .post("http://localhost:8000/user/Signup", userInfo)
-      .then((res) => {
-        if (res.data) {
-          toast.success("Successfully Signed Up!");
-          navigate("/", { replace: true });
-        }
-        localStorage.setItem("User", JSON.stringify(res.data.user));
-      })
-      .catch((err) => {
-        if (err.response) {
-          toast.error("An error occurred");
-        }
+    try {
+      const response = await fetch("http://localhost:8000/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // Important for handling cookies
+        body: JSON.stringify({
+          fullname: data.fullname,
+          email: data.email,
+          password: data.password,
+          username: data.username, // Add username field
+        }),
       });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        if (responseData.data?.user) {
+          localStorage.setItem("User", JSON.stringify(responseData.data.user));
+        }
+        toast.success(responseData.message || "Successfully Signed Up!");
+        navigate("/", { replace: true });
+      } else {
+        toast.error(responseData.message || "An error occurred");
+      }
+    } catch (err) {
+      toast.error("Connection error. Please try again.");
+    }
   };
 
   const handleGoogleLogin = async (credentialResponse) => {
@@ -87,6 +97,34 @@ function Signup() {
 
           <div>
             <label
+              htmlFor="username"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Username
+            </label>
+            <input
+              id="username"
+              type="text"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              placeholder="Choose a username"
+              {...register("username", {
+                required: true,
+                pattern: {
+                  value: /^[a-zA-Z0-9_]+$/,
+                  message:
+                    "Username can only contain letters, numbers and underscores",
+                },
+              })}
+            />
+            {errors.username && (
+              <p className="mt-1 text-sm text-red-500">
+                {errors.username.message || "Username is required"}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label
               htmlFor="email"
               className="block text-gray-700 text-sm font-bold mb-2"
             >
@@ -124,7 +162,15 @@ function Signup() {
               type="password"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
               placeholder="Enter your password"
-              {...register("password", { required: true, minLength: 6 })}
+              {...register("password", {
+                required: true,
+                minLength: 6,
+                // pattern: {
+                //   value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+                //   message:
+                //     "Password must contain at least one letter and one number",
+                // },
+              })}
             />
             {errors.password?.type === "required" && (
               <p className="mt-1 text-sm text-red-500">
@@ -134,6 +180,11 @@ function Signup() {
             {errors.password?.type === "minLength" && (
               <p className="mt-1 text-sm text-red-500">
                 Password must be at least 6 characters
+              </p>
+            )}
+            {errors.password?.type === "pattern" && (
+              <p className="mt-1 text-sm text-red-500">
+                {errors.password.message}
               </p>
             )}
           </div>
