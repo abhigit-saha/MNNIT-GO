@@ -16,12 +16,9 @@ function Cards({ item }) {
           {item.location}
         </h2>
         <p className="text-gray-500 text-sm mb-4">{item.title}</p>
-        <Link
-          to={`/locations/${item._id}`}
-          className="btn btn-primary px-6 py-2 text-sm rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-200 ease-in-out"
-        >
-          SOLVE
-        </Link>
+        <h3 className='text-lg font-semibold mb-2 border-b border-gray-300 w-fit px-3 pb-1'>FACT!!</h3>
+        <p className="text-gray-500 text-sm mb-4">{item.Fact}</p>
+       
       </div>
     </div>
   );
