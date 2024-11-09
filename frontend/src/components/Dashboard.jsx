@@ -19,19 +19,19 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    // Retrieve user data from local storage
+    
     const storedUser = localStorage.getItem("User");
 
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
-      // Redirect to login if not authenticated
+      
       toast.error("Please log in to access the dashboard");
       navigate("/login");
     }
   }, [navigate]);
 
-  // Get user location
+  
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -61,12 +61,12 @@ const Dashboard = () => {
       </h1>
       <p className="text-gray-800 text-lg mb-6">Email: {user.email}</p>
       
-      {/* Error message for geolocation */}
+      
       {error && (
         <p className="text-red-500 font-semibold mb-4">{error}</p>
       )}
       
-      {/* Map displaying user location */}
+      
       <div className="w-full max-w-2xl shadow-lg rounded-lg overflow-hidden mb-8 bg-white">
         <LoadScript googleMapsApiKey="AIzaSyALRTDijcgY92aVyLW8or9KQP0WTNyW2ho">
           <GoogleMap
@@ -81,7 +81,7 @@ const Dashboard = () => {
         </LoadScript>
       </div>
       
-      {/* Add more user-specific content here */}
+      
       <p className="text-gray-700 text-center">Your current location is displayed on the map above.</p>
       <HuntForm></HuntForm>
       <button onClick={logouthandler} className="bg-red-800">Logout</button>

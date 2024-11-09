@@ -1,7 +1,7 @@
-// Import necessary modules
+
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken"; // Import JWT library
+import jwt from "jsonwebtoken"; 
 
 // Sign-up controller
 export const Signup = async (req, res) => {
@@ -32,7 +32,7 @@ export const Signup = async (req, res) => {
   }
 };
 
-// Login controller with JWT generation
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -58,7 +58,7 @@ export const login = async (req, res) => {
         fullname: user.fullname,
         email: user.email,
       },
-      token, // Send token to client
+      token, 
     });
   } catch (error) {
     console.log("Error:", error.message);
@@ -68,7 +68,7 @@ export const login = async (req, res) => {
 
 // Middleware to authenticate JWT
 export const authenticateToken = (req, res, next) => {
-  const token = req.headers["authorization"]?.split(" ")[1]; // Get token from header
+  const token = req.headers["authorization"]?.split(" ")[1]; 
   if (!token) {
     return res.status(403).json({ message: "Access denied" });
   }
@@ -82,11 +82,10 @@ export const authenticateToken = (req, res, next) => {
   });
 };
 
-// Protected route for user dashboard
 export const getUserDashboard = async (req, res) => {
   try {
     const userId = req.user.id; // Get user ID from the token
-    const user = await User.findById(userId).select("-password"); // Exclude password
+    const user = await User.findById(userId).select("-password"); 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

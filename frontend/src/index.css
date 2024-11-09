@@ -1,3 +1,136 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* index.css */
+
+/* Define a dark background for the entire site */
+body {
+  @apply bg-dark; /* Utilize Tailwind utility classes for easy background application */
+  color: #E5E7EB; /* Light Text Color */
+  font-family: 'Inter', sans-serif;
+}
+
+/* Tailwind overrides for custom colors */
+.bg-dark {
+  background-color: #130614; /* Background Dark */
+}
+
+.bg-dark-panel {
+  background-color: #1b0b20; /* Dark panel background */
+}
+
+/* Customize Link styles */
+a {
+  color: #f555e0; /* Neon Pink */
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  color: #9b51e0; /* Neon Purple */
+  text-shadow: 0px 0px 8px #9b51e0; /* Light neon glow effect */
+}
+
+/* Buttons */
+button {
+  background-color: #f555e0; /* Neon Pink */
+  color: #130614; /* Background Dark */
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #9b51e0; /* Neon Purple */
+  box-shadow: 0px 0px 10px #f555e0; /* Glow effect */
+}
+
+/* Panels or Cards */
+.panel {
+  background-color: #1b0b20; /* Dark panel background */
+  border: 1px solid #f555e0; /* Neon border */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0px 0px 15px rgba(245, 85, 224, 0.2); /* Soft neon shadow */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #E5E7EB; /* Light text color */
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #f555e0; /* Neon Pink for main headings */
+  text-shadow: 0px 0px 8px #f555e0;
+}
+
+h2 {
+  color: #9b51e0; /* Neon Purple for subheadings */
+  text-shadow: 0px 0px 6px #9b51e0;
+}
+
+/* Neon Glow for specific elements */
+.neon-glow {
+  color: #f555e0;
+  text-shadow: 0px 0px 8px #f555e0;
+}
+
+/* Card-like style for event boxes */
+.event-box {
+  background-color: #130614; /* Matches main background */
+  color: #f555e0; /* Neon Pink */
+  border: 1px solid #9b51e0; /* Neon Purple border */
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.event-box:hover {
+  background-color: #1b0b20;
+  transform: scale(1.05);
+}
+
+/* Utility Classes */
+.text-neon-pink {
+  color: #f555e0;
+  text-shadow: 0px 0px 4px #f555e0;
+}
+
+.text-neon-purple {
+  color: #9b51e0;
+  text-shadow: 0px 0px 4px #9b51e0;
+}
+
+.border-neon {
+  border: 1px solid #f555e0;
+}
+
+.shadow-neon {
+  box-shadow: 0px 0px 10px rgba(245, 85, 224, 0.3);
+}
+
+.bg-neon-pink {
+  background-color: #f555e0;
+}
+
+.bg-neon-purple {
+  background-color: #9b51e0;
+}
+
+/* Custom neon-themed text and background colors */
+.text-neonPink { color: #f555e0; text-shadow: 0px 0px 6px #f555e0; }
+.text-neonPurple { color: #9b51e0; text-shadow: 0px 0px 6px #9b51e0; }
+.text-neonGreen { color: #39FF14; }
+.text-neonYellow { color: #FFDD33; }
+.text-neonRed { color: #FF3131; }
+
+/* Neon panel and button styling */
+.bg-darkPanel { background-color: #1b0b20; }
+.shadow-neon { box-shadow: 0px 0px 15px rgba(245, 85, 224, 0.4); }
+
