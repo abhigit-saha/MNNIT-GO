@@ -13,6 +13,7 @@ import ReadQr from "./components/ReadQr";
 import { Toaster } from "react-hot-toast";
 import Premium from "./components/Premium.jsx";
 import Awards from "./components/Awards.jsx";
+import About from "./components/About.jsx";
 import axios from "axios";
 // Protected Route Component
 import ProtectedRoute from "./ProtectedRoute";
@@ -34,6 +35,7 @@ function App() {
         <Route path="/readqr" element={<ReadQr />} />
         <Route path="/premium" element={<Premium />} />
         <Route path="/awards" element={<Awards userI={User} />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/hunts/:id"
           element={

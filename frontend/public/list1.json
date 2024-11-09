@@ -1,139 +1,137 @@
 [
-    {
-      "name": "Administrative Building Quest",
-      "title": "The Director's Challenge",
-      "description": "Navigate through the historic Administrative Building of MNNIT, discovering its architectural secrets and rich heritage through challenging puzzles.",
-      "image": "/admin.jpg",
-      "difficulty": "Medium",
-      "locations": [
-        {
-          "name": "Main Entrance",
-          "clues": [
-            {
-              "image":"/admin.jpg",
-              "text": "Add the digits of the year when MNNIT got its NIT status. Divide by 2 to proceed.",
-              "answer": "11",
-              "isUnlocked": false
-            }
-           
-          ]
-        },
-        {
-          "name": "Director's Office Wing",
-          "clues":[
-            {
-              "image":"/admin.jpg",
-              "text":"How many directors' photos are displayed in golden frames on the heritage wall?",
-              "answer":"7",
-              "isUnlocked":false
-
-
+  {
+    "name": "Administrative Building Quest",
+    "title": "The Director's Challenge",
+    "description": "Navigate through the historic Administrative Building of MNNIT, discovering its architectural secrets and rich heritage through challenging puzzles.",
+    "image": "/admin.jpg",
+    "difficulty": "Medium",
+    "locations": [
+      {
+        "name": "Main Entrance",
+        "clues": [
+          {
+            "image": "/admin.jpg",
+            "text": "MNNIT became an NIT in a year. Add the digits of this year. The sum should be divided by 2 to reveal your next step.",
+            "hint": "The answer lies in a plaque near the main gate. Think of the digits like a secret code: once you have it, split it in half!",
+            "answer": "11",
+            "isUnlocked": false
           }
         ]
-          
-  
-          
-        },
-        {
-          "name": "Conference Hall",
-          "clues":[
-            {
-              "image":"/admin.jpg",
-              "text":"Count the pillars at the main entrance, multiply by windows on the front facade,divide by 4",
-              "answer":"6",
-              "isUnlocked":false
-
-
+      },
+      {
+        "name": "Director's Office Wing",
+        "clues": [
+          {
+            "image": "/admin.jpg",
+            "text": "Golden frames hold the legacy of leadership. How many directors' portraits are displayed in gold frames?",
+            "hint": "Count carefully. But here's the twist: not all frames are gold! Ignore the silver ones. Reflect on what's missing and only count the golden memories.",
+            "answer": "7",
+            "isUnlocked": false
           }
         ]
-          
-        }
-      ]
-     
-    },
-    {
-      "name": "Cafe69 Adventure",
-      "title": "Culinary Code Quest",
-      "description": "Explore MNNIT's favorite hangout spot, Cafe69, where food meets fun in this exciting treasure hunt.",
-      "image": "cafe69.jpg",
-      "difficulty": "Easy",
-      "locations": [
-        {
-          "name": "Menu Wall",
-          "clues":[
-            {
-              "image":"cafe69.jpg",
-              "text": "What's the price of the most popular combo meal divided by 10?",
-              "answer": "15",
-              "isUnlocked": false
-            }
-          ]
-        },
-        {
-          "name": "Seating Area",
-          "clues":[
-            {
-              "image":"cafe69.jpg",
-               "text": "Count the number of ceiling fans in the main seating area, multiply by 2.",
-               "answer": "16",
-               "isUnlocked": false
+      },
+      {
+        "name": "Conference Hall",
+        "clues": [
+          {
+            "image": "/admin.jpg",
+            "text": "At the main entrance, count the pillars. Multiply this number by the windows on the front facade, then divide by 4.",
+            "hint": "Not all windows are obvious! Some are hidden behind curtains or plants. Find the total and think outside the box.",
+            "answer": "6",
+            "isUnlocked": false
           }
         ]
-        },
-        {
-          "name": "Garden Section",
-          "clues":[
-            {
-              "image":"cafe69.jpg",
-              "text": "How many stone benches are there in the garden section?",
-               "answer": "4",
-               "isUnlocked": false
-            }
-          ]
-        }
-      ]
-     
-    },
-    {
-      "name": "Central Library Mystery",
-      "title": "Knowledge Navigator",
-      "description": "Dive into the vast repository of knowledge at MNNIT's Central Library, where books hold more than just information.",
-      "image": "central-library.jpg",
-      "difficulty": "Hard",
-      "locations": [
-        {
-          "name": "Reference Section",
-          "clues":[{
-            "image":"central-library.jpg",
-            "text": "On the first bookshelf of Engineering Mathematics, add the edition numbers of all Kreyszig books on display.",
-          "answer": "23",
-          "isUnlocked": false
+      }
+    ]
+  },
+  {
+    "name": "Cafe69 Adventure",
+    "title": "Culinary Code Quest",
+    "description": "Explore MNNIT's favorite hangout spot, Cafe69, where food meets fun in this exciting treasure hunt.",
+    "image": "cafe69.jpg",
+    "difficulty": "Easy",
+    "locations": [
+      {
+        "name": "Menu Wall",
+        "clues": [
+          {
+            "image": "cafe69.jpg",
+            "text": "The most popular combo meal has a hidden code. Its price divided by 10 is the answer.",
+            "hint": "Look for a hidden discount code in the fine print of the menu. Sometimes, the best deals are hidden in plain sight. Find the price, then find its hidden meaning.",
+            "answer": "15",
+            "isUnlocked": false
           }
         ]
-        },
-        {
-          "name": "Digital Library",
-          "clues":[
-            {
-              "image":"central-library.jpg",
-              "text": "What floor number has the IEEE journal section? Multiply by the number of computer labs.",
-              "answer": "8",
-              "isUnlocked": false
-            }
-          ]
-        },
-        {
-          "name": "Reading Hall",
-          "clues":[
-            {
-              "image":"central-library.jpg",
-              "text": "Count the number of ceiling lights in the main reading hall, divide by the number of emergency exits.",
-              "answer": "12",
-              "isUnlocked": false
-            }
-          ]
-        }
-      ]
-     
-    }
-  ]
+      },
+      {
+        "name": "Seating Area",
+        "clues": [
+          {
+            "image": "cafe69.jpg",
+            "text": "Ceiling fans spin overhead, but how many are there? Multiply the number you see by 2.",
+            "hint": "The fans may not all be running. Look for shadows or ceiling mounts. Sometimes what's not moving is just as important as what is.",
+            "answer": "16",
+            "isUnlocked": false
+          }
+        ]
+      },
+      {
+        "name": "Garden Section",
+        "clues": [
+          {
+            "image": "cafe69.jpg",
+            "text": "How many stone benches are there in the garden section? The answer is hidden among the greenery.",
+            "hint": "Not all benches are easy to see. Some may be hidden behind plants or trees. Use your observation skills to uncover the hidden seating.",
+            "answer": "4",
+            "isUnlocked": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Central Library Mystery",
+    "title": "Knowledge Navigator",
+    "description": "Dive into the vast repository of knowledge at MNNIT's Central Library, where books hold more than just information.",
+    "image": "central-library.jpg",
+    "difficulty": "Hard",
+    "locations": [
+      {
+        "name": "Reference Section",
+        "clues": [
+          {
+            "image": "central-library.jpg",
+            "text": "Add the edition numbers of all the Kreyszig Engineering Mathematics books on the first bookshelf.",
+            "hint": "Each edition number hides a clue. Find all the Kreyszig books, sum their edition numbers, and see what secret they reveal. Be careful not to count any reprints or duplicates.",
+            "answer": "23",
+            "isUnlocked": false
+          }
+        ]
+      },
+      {
+        "name": "Digital Library",
+        "clues": [
+          {
+            "image": "central-library.jpg",
+            "text": "What floor has the IEEE journal section? Multiply this by the number of computer labs in the entire library.",
+            "hint": "Check the electronic catalog for IEEE journals. It might also list the locations of computer labs. Use logic and calculation to find your way.",
+            "answer": "8",
+            "isUnlocked": false
+          }
+        ]
+      },
+      {
+        "name": "Reading Hall",
+        "clues": [
+          {
+            "image": "central-library.jpg",
+            "text": "Count the ceiling lights in the main reading hall. Divide this count by the number of emergency exits.",
+            "hint": "Emergency exits are marked but often overlooked. Don't just look up for lights—also look around for hidden exits.",
+            "answer": "12",
+            "isUnlocked": false
+          }
+        ]
+      }
+    ]
+  }
+]

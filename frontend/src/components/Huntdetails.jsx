@@ -102,7 +102,8 @@ const HuntDetails = () => {
           <div className="hunt-content">
             <div className="clue-section">
               <h2>LOCATION: {currentLocation.name}</h2>
-              <p className="clue-text">Clue: {currentClue.text}</p>
+              <p className="clue-text ">Question: {currentClue.text}</p>
+              <p className="clue-text">Hint: {currentClue.hint}</p>
             </div>
 
             <div className="answer-section">
@@ -207,6 +208,9 @@ const HuntDetails = () => {
           font-size: 1.2em;
           color: #2d3748;
           margin-bottom: 15px;
+          
+          
+          
         }
 
         .answer-section {
