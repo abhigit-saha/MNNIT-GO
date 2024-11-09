@@ -5,17 +5,29 @@ import { toast } from "react-hot-toast";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import HuntForm from "./HuntForm";
 import Layout from "./DashboardComp/layout";
+import axios from "axios";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [location, setLocation] = useState({ lat: null, lng: null });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const mapContainerStyle = { width: "100%", height: "400px", borderRadius: "8px" };
+  const mapContainerStyle = {
+    width: "100%",
+    height: "400px",
+    borderRadius: "8px",
+  };
 
-  function logouthandler() {
-    localStorage.clear();
-    navigate("/");
+  async function logouthandler() {
+    // localStorage.clear();
+    try {
+      await axios.post("http://localhost:8000/user/logout", user, {
+        withCredentials: true,
+      });
+      navigate("/");
+    } catch (e) {
+      toast.error("Error logging out");
+    }
   }
 
   useEffect(() => {

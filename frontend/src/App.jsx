@@ -11,25 +11,17 @@ import UnoffHunts from "./components/unoffhunts";
 import Huntdetails from "./components/Huntdetails";
 import ReadQr from "./components/ReadQr";
 import { Toaster } from "react-hot-toast";
-import Premium from './components/Premium.jsx'
-import Awards from './components/Awards.jsx'
-
-
+import Premium from "./components/Premium.jsx";
+import Awards from "./components/Awards.jsx";
+import About from "./components/About.jsx";
+import axios from "axios";
 // Protected Route Component
-function ProtectedRoute({ children }) {
-  const user = localStorage.getItem("User"); // Check if the user is logged in
-
-  if (!user) {
-    return <Navigate to="/login" replace />; // Redirect to login if not authenticated
-  }
-
-  return children;
-}
+import ProtectedRoute from "./ProtectedRoute";
 import HuntForm from "./components/HuntForm.jsx";
 import Navbar from "./components/Navbar.jsx";
 function App() {
-  
-  
+  const User = localStorage.getItem("User");
+
   return (
     <>
       <Navbar />
@@ -42,7 +34,8 @@ function App() {
         <Route path="/unoffhunts" element={<UnoffHunts />} />
         <Route path="/readqr" element={<ReadQr />} />
         <Route path="/premium" element={<Premium />} />
-        <Route path="/awards" element={<Awards />} />
+        <Route path="/awards" element={<Awards userI={User} />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/hunts/:id"
           element={
