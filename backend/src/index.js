@@ -2,6 +2,7 @@
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
 import { app, server } from "./app.js"; // Import the app and server
+// import { app, server } from "./controllers/leaderboard.js";
 
 dotenv.config({
   path: "./.env",

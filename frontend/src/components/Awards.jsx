@@ -2,53 +2,71 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function Awards({ User }) {
-    const [couponCode, setCouponCode] = useState(null);
-    const [status, setStatus] = useState(null);
+  const [couponCode, setCouponCode] = useState(null);
+  const [status, setStatus] = useState(null);
 
-    const handleClaimOffer = async () => {
-        try {
-            const response = await axios.post("http://localhost:8000/coupon/generatecoupon", { User });
-            setCouponCode(response.data.couponCode);
-            setStatus("Generated");
-        } catch (error) {
-            console.error("Error generating coupon:", error);
-            setStatus("Error generating coupon");
+  const handleClaimOffer = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/coupon/generatecoupon",
+        { User }
+      );
+      setCouponCode(response.data.couponCode);
+      setStatus("Generated");
+    } catch (error) {
+      console.error("Error generating coupon:", error);
+      setStatus("Error generating coupon");
+    }
+  };
+
+  const handleRedeemCoupon = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/coupon/redeemcoupon",
+        {
+          couponCode,
         }
-    };
+      );
+      setStatus("Redeemed");
+    } catch (error) {
+      console.error("Error redeeming coupon:", error);
+      setStatus("Error redeeming coupon");
+    }
+  };
 
-    const handleRedeemCoupon = async () => {
-        try {
-            const response = await axios.post("http://localhost:8000/coupon/redeemcoupon", {
-                couponCode
-            });
-            setStatus("Redeemed");
-        } catch (error) {
-            console.error("Error redeeming coupon:", error);
-            setStatus("Error redeeming coupon");
-        }
-    };
+  return (
+    <div className="awards-container">
+      <div className="celebration-banner">
+        <img
+          src="https://example.com/trophy.png"
+          alt="Trophy"
+          className="trophy-icon"
+        />
+        <h2>🎉 Congratulations on Completing the Hunt! 🎉</h2>
+      </div>
+      <button
+        onClick={handleClaimOffer}
+        disabled={!!couponCode}
+        className="claim-button"
+      >
+        {couponCode ? "Offer Claimed!" : "Claim Offer"}
+      </button>
+      {couponCode && (
+        <div className="coupon-container">
+          <h3>Your Unique Coupon Code:</h3>
+          <p className="coupon-code">{couponCode}</p>
+          <button
+            onClick={handleRedeemCoupon}
+            disabled={status === "Redeemed"}
+            className="redeem-button"
+          >
+            {status === "Redeemed" ? "Coupon Redeemed!" : "Redeem Now"}
+          </button>
+        </div>
+      )}
+      <p className="status-text">{status && `Status: ${status}`}</p>
 
-    return (
-        <div className="awards-container">
-            <div className="celebration-banner">
-                <img src="https://example.com/trophy.png" alt="Trophy" className="trophy-icon" />
-                <h2>🎉 Congratulations on Completing the Hunt! 🎉</h2>
-            </div>
-            <button onClick={handleClaimOffer} disabled={!!couponCode} className="claim-button">
-                {couponCode ? "Offer Claimed!" : "Claim Offer"}
-            </button>
-            {couponCode && (
-                <div className="coupon-container">
-                    <h3>Your Unique Coupon Code:</h3>
-                    <p className="coupon-code">{couponCode}</p>
-                    <button onClick={handleRedeemCoupon} disabled={status === "Redeemed"} className="redeem-button">
-                        {status === "Redeemed" ? "Coupon Redeemed!" : "Redeem Now"}
-                    </button>
-                </div>
-            )}
-            <p className="status-text">{status && `Status: ${status}`}</p>
-
-            <style>{`
+      <style>{`
                 .awards-container {
                     display: flex;
                     flex-direction: column;
@@ -136,8 +154,8 @@ function Awards({ User }) {
                     color: #718096;
                 }
             `}</style>
-        </div>
-    );
+    </div>
+  );
 }
 
 export default Awards;

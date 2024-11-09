@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Timer from "./Timer";
-
+import { nanoid } from "nanoid";
 const HuntDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate(); // for navigation
@@ -13,6 +13,7 @@ const HuntDetails = () => {
   const [userAnswer, setUserAnswer] = useState("");
   const [feedback, setFeedback] = useState(null);
   const [completed, setCompleted] = useState(false);
+  const User = JSON.parse(localStorage.getItem("User"));
 
   useEffect(() => {
     const fetchHuntDetails = async () => {
@@ -23,6 +24,7 @@ const HuntDetails = () => {
           localStorage.setItem("timerStartTime", Date.now().toString());
           localStorage.setItem("isCurrentlyRunning", "true");
         }
+        console.log("USER!!!! : ", User);
       } catch (error) {
         console.error("Error fetching hunt details:", error);
       } finally {
@@ -36,12 +38,39 @@ const HuntDetails = () => {
   }, [id]);
 
   useEffect(() => {
-    if (completed) {
-      setTimeout(() => {
-        navigate("/awards"); // redirect to Awards component
-      }, 1500);
+    async function setLeaderboard() {
+      if (completed) {
+        //1. get the score => time in seconds taken to complete
+        const timerStartTime = localStorage.getItem("timerStartTime");
+
+        //2. update the leaderboard
+        await axios.post(`http://localhost:8000/leaderboard/${id}/update`, {
+          username: User.username,
+          score: Date.now() - parseInt(timerStartTime),
+        });
+
+        //3. create a unique token that confirms that the user has completed the hunt.
+        //and store it in the db
+        const credential = nanoid();
+        const response = await axios.post(
+          "http://localhost:8000/credential/create-credential",
+          {
+            username: JSON.stringify(User.username),
+            credential: credential,
+          }
+        );
+
+        navigate(`/completed/${User.username}/${credential}`);
+      }
     }
-  }, [completed, navigate]);
+
+    // if (completed) {
+    //   setTimeout(() => {
+    //     navigate("/awards"); // redirect to Awards component
+    //   }, 1500);
+    // }
+    setLeaderboard();
+  }, [completed]);
 
   const handleAnswerSubmit = () => {
     const currentLocation = hunt.locations[currentLocationIndex];
