@@ -93,7 +93,7 @@ const Login = () => {
                 <div className="btn-layer"></div>
                 <input type="submit" value="Login" />
               </div>
-              <div className="flex flex-col justify-center">
+              {/* <div className="flex flex-col justify-center">
                 <div className="text-gray-700 text-center m-4">OR</div>
                 <Link
                   to="/google"
@@ -102,7 +102,7 @@ const Login = () => {
                   Login with Google{" "}
                   <FontAwesomeIcon icon={faGoogle} className="ml-2" />
                 </Link>
-              </div>
+              </div> */}
               <div className="signup-link">
                 Not a member? <Link to="/signup">Signup now</Link>
               </div>

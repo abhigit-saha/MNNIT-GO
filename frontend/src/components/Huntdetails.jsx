@@ -150,7 +150,8 @@ const HuntDetails = () => {
                   </button>
                 </div>
               )}
-              <p className="clue-text">Clue: {currentClue.text}</p>
+              <p className="clue-text">Question: {currentClue.text}</p>
+              <p className="clue-text">Hint: {currentClue.hint}</p>
             </div>
 
             <div className="answer-section">

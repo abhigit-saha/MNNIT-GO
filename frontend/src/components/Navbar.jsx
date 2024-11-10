@@ -52,7 +52,7 @@ function Navbar() {
 
           {/* Navigation Links */}
           <div className="flex items-center space-x-6">
-            {["Home", "Locations", "Hunts", "About", "Premium"].map(
+            {["Home", "Locations", "Hunts", "About Us", "Premium"].map(
               (item, index) => (
                 <Link
                   key={index}

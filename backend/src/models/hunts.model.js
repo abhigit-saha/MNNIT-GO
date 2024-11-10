@@ -38,6 +38,10 @@ const huntSchema = mongoose.Schema({
             type: String,
             required: true,
           },
+          hint:{
+            typr:String,
+            required:true,
+          },
           answer: {
             type: String,
             required: true,

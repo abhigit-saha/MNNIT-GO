@@ -3,84 +3,83 @@ import { Link } from "react-router-dom";
 
 function About() {
   return (
-    <div className="flex flex-col items-center bg-gray-50 py-10 px-5">
+    <div className="flex flex-col items-center bg-darkPurple py-10 px-5 text-textLight">
       {/* Header Section */}
-      <div className="text-4xl font-bold text-gray-800 mb-6">
+      <div className="text-5xl font-bold text-neonPink mb-10 text-center glitch-effect">
         About Our Scavenger Hunt App
       </div>
 
       {/* Introduction Section */}
-      <div className="max-w-3xl text-center text-gray-700 mb-10">
-        <p>
+      <div className="max-w-3xl text-center mb-12">
+        <p className="text-lg text-neonPurple">
           Welcome to our innovative Scavenger Hunt App! Whether you're looking
-          for a fun adventure, team-building activity, or just want to explore
-          your city, we've got you covered. Our platform allows users to
-          participate in exciting, pre-designed hunts or create their own
-          customized hunts.
+          for a thrilling adventure, a team-building experience, or simply want
+          to explore your city, we've got you covered. Dive into exciting,
+          pre-designed hunts or create your own customized scavenger hunts.
         </p>
       </div>
 
       {/* Features Section */}
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-8 mb-2">
-        <h2 className="text-2xl  font-semibold text-gray-800 mb-4 text-center">
+      <div className="w-full max-w-4xl bg-backgroundDark rounded-xl shadow-neon border border-neonPink p-8 mb-12 neon-border">
+        <h2 className="text-3xl font-semibold text-neonPink mb-6 text-center">
           Features of Our App
         </h2>
-        <ul className="list-disc list-inside text-gray-600">
-          <li className="mb-2">
-            <strong>Join Pre-Defined Hunts:</strong> Dive into various themed
-            scavenger hunts designed by our team for different locations.
+        <ul className="list-disc list-inside space-y-4 text-neonPurple">
+          <li>
+            <strong>Join Pre-Defined Hunts:</strong> Participate in various
+            themed scavenger hunts curated by our team for different locations.
           </li>
-          <li className="mb-2">
-            <strong>Create Your Own Hunt:</strong> Unlock your creativity by
-            designing your own scavenger hunts with customized clues and
+          <li>
+            <strong>Create Your Own Hunt:</strong> Unleash your creativity by
+            designing personalized scavenger hunts with unique clues and
             locations.
           </li>
-          <li className="mb-2">
-            <strong>Premium Membership:</strong> Enjoy exclusive features by
+          <li>
+            <strong>Premium Membership:</strong> Unlock exclusive features by
             subscribing to our premium plan for just{" "}
-            <span className="text-green-600 font-bold">₹499</span>. Create
-            unlimited hunts, access exclusive content, and more!
+            <span className="text-green-500 font-bold">₹499</span>. Create
+            unlimited hunts, access premium content, and more!
           </li>
-          <li className="mb-2">
-            <strong>Claim Rewards:</strong> Participate in hunts to win exciting
-            offers from our partner cafes and stores.
+          <li>
+            <strong>Claim Rewards:</strong> Win exciting offers from our partner
+            cafes and stores by participating in hunts.
           </li>
         </ul>
       </div>
 
       {/* Premium Section */}
-      <div className="max-w-3xl bg-indigo-100 rounded-lg shadow p-6 mb-10 text-center">
-        <h3 className="text-xl font-bold text-indigo-800 mb-3">
+      <div className="max-w-3xl bg-gradient-to-r from-cyberBlue via-neonPurple to-neonPink rounded-xl shadow-lg p-8 mb-12 text-center neon-border">
+        <h3 className="text-2xl font-bold text-textLight mb-4">
           Go Premium for Only ₹499
         </h3>
-        <p className="text-gray-700 mb-5">
-          Upgrade to our premium plan to get the best experience. Create
-          unlimited custom hunts, access special offers, and enjoy ad-free
-          gameplay.
+        <p className="text-lg mb-6 text-gray-300">
+          Upgrade to our premium plan to unlock the best experience. Create
+          unlimited hunts, access exclusive offers, and enjoy an ad-free
+          journey.
         </p>
         <Link
           to="/premium"
-          className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-300"
+          className="bg-neonPink text-backgroundDark px-8 py-3 rounded-full shadow-cyber hover:bg-neonPurple transition duration-300"
         >
           Get Premium
         </Link>
       </div>
 
       {/* Sponsors Section */}
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-8 mb-10">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+      <div className="w-full max-w-4xl bg-backgroundDark rounded-xl shadow-neon border border-neonPink p-8 mb-12 neon-border">
+        <h2 className="text-3xl font-semibold text-neonPurple mb-8 text-center">
           Our Sponsors
         </h2>
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center gap-10">
           {/* Sponsor 1 */}
           <div className="flex flex-col items-center">
             <img
               src="https://via.placeholder.com/150"
               alt="Yamuna Cafe"
-              className="h-24 w-24 mb-4 rounded-full object-cover"
+              className="h-32 w-32 mb-4 rounded-full object-cover shadow-lg border-4 border-neonPink"
             />
-            <h4 className="text-lg font-semibold">Yamuna Café</h4>
-            <p className="text-gray-500">Delicious coffee & snacks.</p>
+            <h4 className="text-xl font-bold">Yamuna Café</h4>
+            <p className="text-gray-400">Delicious coffee & snacks.</p>
           </div>
 
           {/* Sponsor 2 */}
@@ -88,26 +87,26 @@ function About() {
             <img
               src="https://via.placeholder.com/150"
               alt="Dewsis"
-              className="h-24 w-24 mb-4 rounded-full object-cover"
+              className="h-32 w-32 mb-4 rounded-full object-cover shadow-lg border-4 border-neonPurple"
             />
-            <h4 className="text-lg font-semibold">Dewsis</h4>
-            <p className="text-gray-500">Exclusive offers for hunt winners.</p>
+            <h4 className="text-xl font-bold">Dewsis</h4>
+            <p className="text-gray-400">Exclusive offers for hunt winners.</p>
           </div>
         </div>
       </div>
 
       {/* Call to Action */}
-      <div className="text-center mt-10">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">
+      <div className="text-center mt-16">
+        <h3 className="text-3xl font-bold text-neonPink mb-6">
           Ready to Start Your Adventure?
         </h3>
-        <p className="text-gray-600 mb-6">
+        <p className="text-lg text-gray-400 mb-8">
           Join our community of explorers today and dive into the fun-filled
           world of scavenger hunts!
         </p>
         <Link
           to="/hunts"
-          className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300"
+          className="bg-cyberBlue text-backgroundDark px-8 py-3 rounded-full shadow-cyber hover:bg-neonPurple transition duration-300"
         >
           Start a Hunt Now
         </Link>

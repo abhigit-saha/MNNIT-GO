@@ -17,6 +17,7 @@ import HuntForm from "./components/HuntForm.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
 import Completed from "./components/DummyPage/Completed.jsx";
+import About from './components/About.jsx'
 
 function App() {
   const User = localStorage.getItem("User");
@@ -33,7 +34,8 @@ function App() {
         <Route path="/unoffhunts" element={<UnoffHunts />} />
         <Route path="/readqr" element={<ReadQr />} />
         <Route path="/premium" element={<Premium />} />
-        {/* <Route path="/awards" element={<Awards userI={User} />} /> */}
+        <Route path="/awards" element={<Awards  />} />
+        <Route path="/about us" element={<About  />} />
 
         <Route
           path="/hunts/:id"
