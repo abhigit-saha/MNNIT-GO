@@ -33,7 +33,7 @@ function App() {
         <Route path="/unoffhunts" element={<UnoffHunts />} />
         <Route path="/readqr" element={<ReadQr />} />
         <Route path="/premium" element={<Premium />} />
-        <Route path="/awards" element={<Awards userI={User} />} />
+        {/* <Route path="/awards" element={<Awards userI={User} />} /> */}
 
         <Route
           path="/hunts/:id"

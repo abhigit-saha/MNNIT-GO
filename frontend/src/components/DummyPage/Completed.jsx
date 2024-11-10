@@ -2,11 +2,15 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useState } from "react";
+import Awards from "../Awards";
 import toast from "react-hot-toast";
 //make this a parent component, kind of like a protected component.
 function Completed({ username, credential }) {
+  const User = localStorage.getItem("User");
   const navigate = useNavigate();
   // const credential = localStorage.getItem("Credential");
+  const [verified, setVerified] = useState(false);
   console.log("Credential!!! ", credential);
   useEffect(() => {
     async function checkCredentials() {
@@ -16,7 +20,8 @@ function Completed({ username, credential }) {
           { credential: credential }
         );
 
-        navigate("/awards");
+        // navigate("/awards");
+        setVerified(true);
       } catch (e) {
         console.log(e);
       }
@@ -27,11 +32,7 @@ function Completed({ username, credential }) {
       // localStorage.removeItem("Credential");
     };
   }, []);
-  return (
-    <>
-      <div>BRODDDAAA</div>
-    </>
-  );
+  return <>{verified && <Awards userI={User} />}</>;
 }
 
 export default Completed;

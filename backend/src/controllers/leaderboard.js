@@ -11,7 +11,6 @@ const getLeaderboard = asyncHandler(async (req, res) => {
     `leaderboard:${huntId}`,
     0,
     9,
-    "REV",
     "WITHSCORES"
   );
 
@@ -57,7 +56,6 @@ const emitLeaderboard = async (huntId) => {
     `leaderboard:${huntId}`,
     0,
     9,
-    "REV",
     "WITHSCORES"
   );
 

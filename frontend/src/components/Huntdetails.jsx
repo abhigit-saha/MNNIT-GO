@@ -62,7 +62,7 @@ const HuntDetails = () => {
 
         await axios.post(`http://localhost:8000/leaderboard/${id}/update`, {
           username: User.username,
-          score: Date.now() - parseInt(timerStartTime),
+          score: Math.floor((Date.now() - parseInt(timerStartTime)) / 1000),
         });
 
         const credential = nanoid();
