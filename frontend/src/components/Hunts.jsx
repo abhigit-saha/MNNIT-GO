@@ -31,7 +31,7 @@ const Hunts = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-neonPink"></div>
       </div>
     );
   }
@@ -39,58 +39,62 @@ const Hunts = () => {
   if (error) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="text-red-500 text-xl">{error}</div>
+        <div className="text-neonRed text-2xl font-semibold">{error}</div>
       </div>
     );
   }
 
   if (hunts.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-center mb-8">
+      <div className="container mx-auto px-4 py-8 text-center">
+        <h1 className="text-3xl font-bold text-neonPink mb-8">
           Available Scavenger Hunts
         </h1>
-        <p className="text-center text-gray-600">
-          No hunts available at the moment.
-        </p>
+        <p className="text-gray-400">No hunts available at the moment.</p>
       </div>
     );
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">
+      <h1 className="text-3xl font-bold text-center text-neonPink mb-8">
         Available Scavenger Hunts
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {hunts.map((hunt) => (
           <div
             key={hunt._id}
-            className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-105"
+            onClick={() => handleHuntClick(hunt._id)}
+            className="bg-darkPanel rounded-lg shadow-neon cursor-pointer transform transition-transform duration-300 hover:scale-105 border border-neonPink"
           >
+            {/* Image with Difficulty Tag */}
             <div className="relative h-48">
               <img
                 src={hunt.image}
                 alt={hunt.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-t-lg"
               />
               <div className="absolute top-2 right-2">
                 <span
-                  className={`px-3 py-1 rounded-full text-sm ${
+                  className={`px-3 py-1 rounded-full text-sm font-bold ${
                     hunt.difficulty === "Easy"
-                      ? "bg-green-500"
+                      ? "bg-neonGreen"
                       : hunt.difficulty === "Medium"
-                      ? "bg-yellow-500"
-                      : "bg-red-500"
-                  } text-white`}
+                      ? "bg-neonYellow"
+                      : "bg-neonRed"
+                  } text-white shadow-neonGlow`}
                 >
                   {hunt.difficulty}
                 </span>
               </div>
             </div>
+
+            {/* Card Content */}
             <div className="p-4">
-              <h2 className="text-xl font-semibold mb-2">{hunt.title}</h2>
-              <p className="text-gray-600 mb-4 line-clamp-2">
+              <h2 className="text-xl font-semibold text-neonPink mb-2">
+                {hunt.title}
+              </h2>
+              <p className="text-gray-400 mb-4 line-clamp-2">
                 {hunt.description}
               </p>
               <div className="flex justify-between items-center">
@@ -98,7 +102,7 @@ const Hunts = () => {
                   {hunt.locations?.length || 0} Clues
                 </span>
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                  className="bg-neonPink text-darkPanel px-4 py-2 rounded-lg font-bold transition-colors duration-200 hover:bg-neonPurple hover:shadow-neonGlow"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleHuntClick(hunt._id);
