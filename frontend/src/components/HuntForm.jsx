@@ -124,6 +124,7 @@ function HuntForm() {
                 text: "",
                 isUnlocked: false,
                 answer: "",
+                hint: "",
                 isQr: false,
               },
             ],
@@ -518,6 +519,28 @@ function HuntForm() {
                                   locationIndex,
                                   clueIndex,
                                   "answer",
+                                  e.target.value
+                                )
+                              }
+                              className="input input-bordered w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                              placeholder="Enter correct answer"
+                              required
+                            />
+                          </div>
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-gray-600">
+                                Hint
+                              </span>
+                            </label>
+                            <input
+                              type="text"
+                              value={clue.hint}
+                              onChange={(e) =>
+                                updateClue(
+                                  locationIndex,
+                                  clueIndex,
+                                  "hint",
                                   e.target.value
                                 )
                               }

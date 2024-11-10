@@ -38,9 +38,9 @@ const huntSchema = mongoose.Schema({
             type: String,
             required: true,
           },
-          hint:{
-            typr:String,
-            required:true,
+          hint: {
+            type: String,
+            required: true,
           },
           answer: {
             type: String,
