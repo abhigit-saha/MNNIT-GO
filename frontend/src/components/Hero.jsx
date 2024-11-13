@@ -114,13 +114,13 @@ function Hero() {
         </div>
 
         {/* Center Panda Image with Transparent Background */}
-        <div className="w-full md:w-1/3 flex justify-center items-center">
+        {/* <div className="w-full md:w-1/3 flex justify-center items-center">
           <img
             src={pandaImage}
             alt="Panda Character"
             className="w-full max-w-xs h-auto"
           />
-        </div>
+        </div> */}
 
         {/* Right Description */}
         <div className="text-left w-full md:w-1/3 space-y-6">

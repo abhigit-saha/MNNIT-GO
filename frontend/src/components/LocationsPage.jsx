@@ -14,7 +14,7 @@ function LocationsPage() {
     const sampleLocations = [
       {
         _id: "1",
-        name: "New Delhi",
+        name: "Mp Hall",
         title: "Capital of India",
         image: "https://via.placeholder.com/150",
         coordinates: [28.6139, 77.209], // Latitude, Longitude for New Delhi
@@ -40,7 +40,7 @@ function LocationsPage() {
       },
       {
         _id: "3",
-        name: "Kolkata",
+        name: "Admin Building",
         title: "Cultural Capital",
         image: "https://via.placeholder.com/150",
         coordinates: [22.5726, 88.3639], // Latitude, Longitude for Kolkata
@@ -53,7 +53,7 @@ function LocationsPage() {
       },
       {
         _id: "4",
-        name: "Bangalore",
+        name: "workshop",
         title: "Silicon Valley of India",
         image: "https://via.placeholder.com/150",
         coordinates: [12.9716, 77.5946], // Latitude, Longitude for Bangalore

@@ -7,13 +7,16 @@ const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 import Timer from "./Timer";
 import QrCode from "qrcode";
 import Button from "./utils/Button";
-function HuntForm() {
+function HuntForm({ isUnoff, roomId }) {
+  const User = JSON.parse(localStorage.getItem("User"));
   const [formData, setFormData] = useState({
     name: "",
     title: "",
     description: "",
     image: "",
     difficulty: "Easy",
+    roomId: roomId,
+    owner: User.username,
     locations: [],
   });
 
@@ -221,11 +224,19 @@ function HuntForm() {
 
     // }
     try {
-      const response = await axios.post(
-        "http://localhost:8000/hunts",
-        formData
-      );
-      console.log("Hunt created:", response.data);
+      if (isUnoff) {
+        const response = await axios.post(
+          "http://localhost:8000/unoffHunts",
+          formData
+        );
+        console.log("Hunt created:", response.data);
+      } else {
+        const response = await axios.post(
+          "http://localhost:8000/hunts",
+          formData
+        );
+        console.log("Hunt created:", response.data);
+      }
     } catch (error) {
       console.error("Error creating hunt:", error);
     }
