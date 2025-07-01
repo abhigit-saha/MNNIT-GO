@@ -8,28 +8,25 @@
 ## ✨ Key Features  
 
 ### 🧭 Core Functionality  
-✅ **QR-Code Checkpoints** - Scan hidden codes across campus to progress  
-✅ **Live Leaderboard** - Real-time rankings with Redis-powered updates (<500ms)  
-✅ **Zone Restrictions** - Map boundaries ensure players stay in hunt areas  
-✅ **Multi-Hunt Modes** - Solo, Team, and Special Event configurations  
-
-### 🎁 Reward System  
-🛒 **Local Vendor Integration** - Digital coupons for nearby businesses  
-🏆 **Automated Prize Distribution** - Instant rewards for top performers  
-📈 **Sponsorship Dashboard** - Businesses can track campaign performance  
+**QR-Code Checkpoints** - Scan hidden codes across campus to progress  
+**Live Leaderboard** - Real-time rankings with Redis and WebSockets powered updates (<500ms)  
+**Zone Restrictions** - Map boundaries ensure players stay in hunt areas  
+**Multi-Hunt Modes** - Solo, Team, and Special Event configurations: Room based team collaboration allows for your friends to partake in the hunt alongside you.
+**Local Vendor Integration** - Digital coupons for nearby businesses. Secure Coupon generation mechanism using atomic Redis functions ensures that coupon generation is reliable.  
+**Automated Prize Distribution** - Instant rewards for top performers  
+**Sponsorship Dashboard** - Businesses can track campaign performance  
 
 ### 🚧 Future Enhancements  
-🔜 **3D Campus Navigation** - Interactive virtual map of MNNIT  
-🔜 **AR Puzzle Solving** - Augmented reality clue discovery  
-🔜 **Alumni Mode** - Special hunts for former students  
-🔜 **Achievement System** - Badges and collectibles  
+**3D Campus Navigation** - Interactive virtual map of MNNIT  
+**AR Puzzle Solving** - Augmented reality clue discovery  
+**Alumni Mode** - Special hunts for former students  
+**Achievement System** - Badges and collectibles  
 
 ## 🖥️ Tech Stack  
 **Frontend**: React.js + Mapbox GL JS  
 **Backend**: Node.js/Express  
 **Database**: MongoDB (Primary), Redis (Caching)  
-**Real-Time**: Socket.IO  
-**Mobile**: PWA Capabilities  
+**Real-Time**: Socket.IO    
 
 
 
