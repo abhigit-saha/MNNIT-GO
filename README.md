@@ -33,15 +33,23 @@
 ## 🛠️ Installation  
 ```bash
 # Clone the repository
-git clone https://github.com/alwaysahustler/college-hunt.git
+git clone https://github.com/abhigit-saha/MNNIT-GO
 
 # Install dependencies
-cd college-hunt
+cd college-hunt/backend
+npm install
+cd collegen-hunt/frontend
 npm install
 
-# Configure environment
-cp .env.example .env
+# Configure environment variables (rename .env.sample to .env and replace by your own variables)
 # Add your Google Maps API key and MongoDB URI
 
 # Start development server
+cd ./backend/src
+nodemon index.js
+# And the localhost frontend
+cd ./frontend/src
 npm run dev
+```
+
+Note: In case of any redis installation issues, try switching to wsl/Linux
