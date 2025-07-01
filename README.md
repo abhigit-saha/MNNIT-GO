@@ -8,43 +8,48 @@
 ## ✨ Key Features  
 
 ### 🧭 Core Functionality  
-✅ **QR-Code Checkpoints** - Scan hidden codes across campus to progress  
-✅ **Live Leaderboard** - Real-time rankings with Redis-powered updates (<500ms)  
-✅ **Zone Restrictions** - Map boundaries ensure players stay in hunt areas  
-✅ **Multi-Hunt Modes** - Solo, Team, and Special Event configurations  
-
-### 🎁 Reward System  
-🛒 **Local Vendor Integration** - Digital coupons for nearby businesses  
-🏆 **Automated Prize Distribution** - Instant rewards for top performers  
-📈 **Sponsorship Dashboard** - Businesses can track campaign performance  
+**QR-Code Checkpoints** - Scan hidden codes across campus to progress  
+**Live Leaderboard** - Real-time rankings with Redis and WebSockets powered updates (<500ms)  
+**Zone Restrictions** - Map boundaries ensure players stay in hunt areas  
+**Multi-Hunt Modes** - Solo, Team, and Special Event configurations: Room based team collaboration allows for your friends to partake in the hunt alongside you.
+**Local Vendor Integration** - Digital coupons for nearby businesses. Secure Coupon generation mechanism using atomic Redis functions ensures that coupon generation is reliable.  
+**Automated Prize Distribution** - Instant rewards for top performers  
+**Sponsorship Dashboard** - Businesses can track campaign performance  
 
 ### 🚧 Future Enhancements  
-🔜 **3D Campus Navigation** - Interactive virtual map of MNNIT  
-🔜 **AR Puzzle Solving** - Augmented reality clue discovery  
-🔜 **Alumni Mode** - Special hunts for former students  
-🔜 **Achievement System** - Badges and collectibles  
+**3D Campus Navigation** - Interactive virtual map of MNNIT  
+**AR Puzzle Solving** - Augmented reality clue discovery  
+**Alumni Mode** - Special hunts for former students  
+**Achievement System** - Badges and collectibles  
 
 ## 🖥️ Tech Stack  
 **Frontend**: React.js + Mapbox GL JS  
 **Backend**: Node.js/Express  
 **Database**: MongoDB (Primary), Redis (Caching)  
-**Real-Time**: Socket.IO  
-**Mobile**: PWA Capabilities  
+**Real-Time**: Socket.IO    
 
 
 
 ## 🛠️ Installation  
 ```bash
 # Clone the repository
-git clone https://github.com/alwaysahustler/college-hunt.git
+git clone https://github.com/abhigit-saha/MNNIT-GO
 
 # Install dependencies
-cd college-hunt
+cd college-hunt/backend
+npm install
+cd collegen-hunt/frontend
 npm install
 
-# Configure environment
-cp .env.example .env
+# Configure environment variables (rename .env.sample to .env and replace by your own variables)
 # Add your Google Maps API key and MongoDB URI
 
 # Start development server
+cd ./backend/src
+nodemon index.js
+# And the localhost frontend
+cd ./frontend/src
 npm run dev
+```
+
+Note: In case of any redis installation issues, try switching to wsl/Linux
