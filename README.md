@@ -3,6 +3,8 @@
 ## 🚀 Overview  
 **College Hunt** is an innovative gamified platform that transforms college campuses into interactive treasure hunt arenas. Designed initially for MNNIT Allahabad, it combines physical exploration with digital rewards through QR codes, real-time tracking, and vendor partnerships.
 
+## Project Demo Video: https://www.youtube.com/watch?v=C4x8epOaMLo
+
 ## ✨ Key Features  
 
 ### 🧭 Core Functionality  
