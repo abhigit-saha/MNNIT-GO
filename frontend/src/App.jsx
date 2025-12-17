@@ -17,7 +17,8 @@ import HuntForm from "./components/HuntForm.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
 import Completed from "./components/DummyPage/Completed.jsx";
-import About from './components/About.jsx'
+import About from "./components/About.jsx";
+import UnoffHuntsPage from "./components/UnoffHuntsPage.jsx";
 
 function App() {
   const User = localStorage.getItem("User");
@@ -34,14 +35,23 @@ function App() {
         <Route path="/unoffhunts" element={<UnoffHunts />} />
         <Route path="/readqr" element={<ReadQr />} />
         <Route path="/premium" element={<Premium />} />
-        <Route path="/awards" element={<Awards  />} />
-        <Route path="/about us" element={<About  />} />
+        <Route path="/awards" element={<Awards />} />
+        <Route path="/about us" element={<About />} />
+        <Route path="/unoffhunts/:roomId" element={<UnoffHuntsPage />} />
 
         <Route
           path="/hunts/:id"
           element={
             <ProtectedRoute>
-              <Huntdetails />
+              <Huntdetails isUnoff={false} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/unoffHunts/:roomId/:id"
+          element={
+            <ProtectedRoute>
+              <Huntdetails isUnoff={true} />
             </ProtectedRoute>
           }
         />
@@ -49,7 +59,7 @@ function App() {
           path="/create"
           element={
             <ProtectedRoute>
-              <HuntForm />
+              <HuntForm isUnoff={false} roomId={null} />
             </ProtectedRoute>
           }
         />

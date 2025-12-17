@@ -52,17 +52,22 @@ function Navbar() {
 
           {/* Navigation Links */}
           <div className="flex items-center space-x-6">
-            {["Home", "Locations", "Hunts", "About Us", "Premium"].map(
-              (item, index) => (
-                <Link
-                  key={index}
-                  to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                  className="text-textLight hover:text-neonPink transition duration-300 hover:bg-yellow-300 rounded-full px-2 py-1"
-                >
-                  {item}
-                </Link>
-              )
-            )}
+            {[
+              "Home",
+              "Locations",
+              "Hunts",
+              "About Us",
+              "Premium",
+              "Dashboard",
+            ].map((item, index) => (
+              <Link
+                key={index}
+                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                className="text-textLight hover:text-neonPink transition duration-300 hover:bg-yellow-300 rounded-full px-2 py-1"
+              >
+                {item}
+              </Link>
+            ))}
           </div>
 
           {/* Right Section (Search and Login) */}

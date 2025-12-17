@@ -21,8 +21,8 @@ const Modal = ({ isOpen, onClose, children }) => {
   );
 };
 
-const HuntDetails = () => {
-  const { id } = useParams();
+const HuntDetails = ({ isUnoff }) => {
+  const { roomId, id } = useParams();
   const navigate = useNavigate();
   const [hunt, setHunt] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,8 +37,16 @@ const HuntDetails = () => {
   useEffect(() => {
     const fetchHuntDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/hunts/${id}`);
-        setHunt(response.data);
+        if (isUnoff) {
+          const response = await axios.get(
+            `http://localhost:8000/unoffHunts/${id}`
+          );
+          setHunt(response.data);
+        } else {
+          const response = await axios.get(`http://localhost:8000/hunts/${id}`);
+          setHunt(response.data);
+        }
+
         if (localStorage.getItem("isCurrentlyRunning") !== "true") {
           localStorage.setItem("timerStartTime", Date.now().toString());
           localStorage.setItem("isCurrentlyRunning", "true");
@@ -64,17 +72,20 @@ const HuntDetails = () => {
           username: User.username,
           score: Math.floor((Date.now() - parseInt(timerStartTime)) / 1000),
         });
+        if (!isUnoff) {
+          const credential = nanoid();
+          const response = await axios.post(
+            "http://localhost:8000/credential/create-credential",
+            {
+              username: JSON.stringify(User.username),
+              credential: credential,
+            }
+          );
 
-        const credential = nanoid();
-        const response = await axios.post(
-          "http://localhost:8000/credential/create-credential",
-          {
-            username: JSON.stringify(User.username),
-            credential: credential,
-          }
-        );
-
-        navigate(`/completed/${User.username}/${credential}`);
+          navigate(`/completed/${User.username}/${credential}`);
+        } else {
+          navigate(`/unoffHunts/${roomId}`);
+        }
       }
     }
     setLeaderboard();

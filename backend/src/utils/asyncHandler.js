@@ -3,11 +3,17 @@ const asyncHandler = (fn) => {
     try {
       await fn(req, res, next);
     } catch (error) {
-      res.status(error.code || 500).json({
+      console.error("Async handler caught error:", error);
+
+      const statusCode =
+        typeof error.statusCode === "number" ? error.statusCode : 500;
+
+      res.status(statusCode).json({
         success: false,
-        message: error.message,
+        message: error.message || "Internal Server Error",
       });
     }
   };
 };
-export {asyncHandler}
+
+export { asyncHandler };

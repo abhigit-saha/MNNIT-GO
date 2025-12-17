@@ -13,6 +13,7 @@ import { Server } from "socket.io";
 import EventEmitter from "events";
 import { emitLeaderboard } from "./controllers/leaderboard.js";
 import credentialRouter from "./routes/credential.routes.js";
+import unoffHuntRouter from "./routes/unoffHunt.routes.js";
 const app = express();
 const server = http.createServer(app);
 
@@ -23,6 +24,7 @@ initializeHuntSocket(server);
 export const connections = [];
 export let io;
 const myEmitter = new EventEmitter();
+//emitter (todo: store in their own file)
 myEmitter.on(
   "emitLeaderboard",
   async (huntId) => await emitLeaderboard(huntId)
@@ -41,6 +43,24 @@ io.sockets.on("connection", (socket) => {
   console.log(" %s sockets is connected", connections.length);
   socket.on("leaderboardUpdate", (huntId) => {
     myEmitter.emit("emitLeaderboard", huntId);
+  });
+  //when the client (socket) joins the room:
+  socket.on("joinRoom", (roomId) => {
+    //leave any previously joined rooms:
+    Object.keys(socket.rooms).forEach((room) => {
+      if (room !== socket.id) {
+        socket.leave(room);
+      }
+    });
+    socket.join(roomId);
+    console.log(`the socket ${socket.id} joined the room ${roomId}`);
+  });
+
+  //client (socket) leaves the room
+  socket.on("leaveRoom", (roomId) => {
+    socket.leave(roomId);
+
+    console.log(`${socket.id} left the room ${roomId}`);
   });
   socket.on("disconnect", () => {
     connections.splice(connections.indexOf(socket), 1);
@@ -66,6 +86,6 @@ app.use("/hunts", huntrouter);
 app.use("/coupon", couponrouter);
 app.use("/leaderboard", leaderboardrouter);
 app.use("/credential", credentialRouter);
-
+app.use("/unoffHunts", unoffHuntRouter);
 // Export the server for use in index.js
 export { app, server };

@@ -41,7 +41,7 @@ function Premium() {
       ) : (
         // Render the Hunt Form only if the user is premium
         <div className="w-full max-w-2xl bg-backgroundDark rounded-xl shadow-neon border border-cyberBlue p-8 mt-10 neon-border">
-          <HuntForm />
+          <HuntForm isUnoff={false} roomId={null} />
         </div>
       )}
     </div>

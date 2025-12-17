@@ -97,7 +97,7 @@ const Dashboard = () => {
         <p className="text-gray-700 text-center">
           Your current location is displayed on the map above.
         </p>
-        <HuntForm></HuntForm>
+        <HuntForm isUnoff={false} roomId={null} />
         <button onClick={logouthandler} className="bg-red-800">
           Logout
         </button>
