@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
+import { API_BASE_URL, SOCKET_URL } from "../config";
 
 const Leaderboard = ({ huntId }) => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:8000", {
+    const newSocket = io(SOCKET_URL, {
       withCredentials: true,
     });
     setSocket(newSocket);
@@ -15,7 +16,7 @@ const Leaderboard = ({ huntId }) => {
     const fetchLeaderboard = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/leaderboard/${huntId}`
+          `${API_BASE_URL}/api/leaderboard/${huntId}`
         );
         setLeaderboard(response.data.data);
       } catch (error) {

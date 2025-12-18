@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "./config";
 
 function ProtectedRoute({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -18,7 +19,7 @@ function ProtectedRoute({ children }) {
         }
         // Make API call to verify endpoint
         const response = await axios.post(
-          "http://localhost:8000/user/verify",
+          `${API_BASE_URL}/api/user/verify`,
           { user },
           {
             withCredentials: true,

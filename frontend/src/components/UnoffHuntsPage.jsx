@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 import HuntForm from "./HuntForm";
 import UnofficialHuntsList from "./UnoffHuntsList";
-const newSocket = io("http://localhost:8000", {
+import { SOCKET_URL } from "../config";
+
+const newSocket = io(SOCKET_URL, {
   autoConnect: false,
 });
 

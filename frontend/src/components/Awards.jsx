@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 function Awards({ User }) {
   const [couponCode, setCouponCode] = useState(null);
@@ -8,7 +9,7 @@ function Awards({ User }) {
   const handleClaimOffer = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/coupon/generatecoupon",
+        `${API_BASE_URL}/api/coupon/generatecoupon`,
         { User }
       );
       setCouponCode(response.data.couponCode);
@@ -22,7 +23,7 @@ function Awards({ User }) {
   const handleRedeemCoupon = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/coupon/redeemcoupon",
+        `${API_BASE_URL}/api/coupon/redeemcoupon`,
         {
           couponCode,
         }

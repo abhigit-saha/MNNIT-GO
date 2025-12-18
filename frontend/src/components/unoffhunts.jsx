@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
+import { SOCKET_URL } from "../config";
 
-const socket = io("http://localhost:8000"); // Adjust port if necessary
+const socket = io(SOCKET_URL); // Adjust port if necessary
 
 //functionality for unofficial hunts:
 //1. only those in the room can create and attempt hunts

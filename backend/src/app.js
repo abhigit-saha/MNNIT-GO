@@ -79,13 +79,13 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 
-// Routes
-app.use("/user", userroute);
-app.use("/locations", locationrouter);
-app.use("/hunts", huntrouter);
-app.use("/coupon", couponrouter);
-app.use("/leaderboard", leaderboardrouter);
-app.use("/credential", credentialRouter);
-app.use("/unoffHunts", unoffHuntRouter);
+// Routes - all prefixed with /api
+app.use("/api/user", userroute);
+app.use("/api/locations", locationrouter);
+app.use("/api/hunts", huntrouter);
+app.use("/api/coupon", couponrouter);
+app.use("/api/leaderboard", leaderboardrouter);
+app.use("/api/credential", credentialRouter);
+app.use("/api/unoffHunts", unoffHuntRouter);
 // Export the server for use in index.js
 export { app, server };

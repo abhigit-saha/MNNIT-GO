@@ -5,6 +5,7 @@ import Timer from "./Timer";
 import { nanoid } from "nanoid";
 import { X } from "lucide-react";
 import ReadQr from "./ReadQr";
+import { API_BASE_URL } from "../config";
 
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
@@ -39,11 +40,11 @@ const HuntDetails = ({ isUnoff }) => {
       try {
         if (isUnoff) {
           const response = await axios.get(
-            `http://localhost:8000/unoffHunts/${id}`
+            `${API_BASE_URL}/api/unoffHunts/${id}`
           );
           setHunt(response.data);
         } else {
-          const response = await axios.get(`http://localhost:8000/hunts/${id}`);
+          const response = await axios.get(`${API_BASE_URL}/api/hunts/${id}`);
           setHunt(response.data);
         }
 
@@ -68,14 +69,14 @@ const HuntDetails = ({ isUnoff }) => {
       if (completed) {
         const timerStartTime = localStorage.getItem("timerStartTime");
 
-        await axios.post(`http://localhost:8000/leaderboard/${id}/update`, {
+        await axios.post(`${API_BASE_URL}/api/leaderboard/${id}/update`, {
           username: User.username,
           score: Math.floor((Date.now() - parseInt(timerStartTime)) / 1000),
         });
         if (!isUnoff) {
           const credential = nanoid();
           const response = await axios.post(
-            "http://localhost:8000/credential/create-credential",
+            `${API_BASE_URL}/api/credential/create-credential`,
             {
               username: JSON.stringify(User.username),
               credential: credential,

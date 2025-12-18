@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Button from "./utils/Button";
+import { API_BASE_URL } from "../config";
+
 const Hunts = () => {
   const [hunts, setHunts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +16,7 @@ const Hunts = () => {
 
   const fetchHunts = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/hunts");
+      const response = await axios.get(`${API_BASE_URL}/api/hunts`);
       setHunts(response.data);
       setLoading(false);
     } catch (error) {

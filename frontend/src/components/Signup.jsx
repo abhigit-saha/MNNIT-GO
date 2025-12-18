@@ -4,19 +4,20 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { GoogleLogin } from "@react-oauth/google";
+import { API_BASE_URL } from "../config";
 
 function Signup() {
   const {
     register,
     handleSubmit,
-    formState: { errors },          
+    formState: { errors },
   } = useForm();
 
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:8000/user/register", {
+      const response = await fetch(`${API_BASE_URL}/api/user/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +50,7 @@ function Signup() {
   const handleGoogleLogin = async (credentialResponse) => {
     if (credentialResponse.credential) {
       await axios
-        .post("http://localhost:8000/user/google-signin", {
+        .post(`${API_BASE_URL}/api/user/google-signin`, {
           token: credentialResponse.credential,
         })
         .then((res) => {

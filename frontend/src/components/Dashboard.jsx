@@ -6,6 +6,7 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import HuntForm from "./HuntForm";
 import Layout from "./DashboardComp/layout";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -21,7 +22,7 @@ const Dashboard = () => {
   async function logouthandler() {
     // localStorage.clear();
     try {
-      await axios.post("http://localhost:8000/user/logout", user, {
+      await axios.post(`${API_BASE_URL}/api/user/logout`, user, {
         withCredentials: true,
       });
       navigate("/");

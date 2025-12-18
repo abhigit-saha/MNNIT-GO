@@ -7,6 +7,7 @@ const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 import Timer from "./Timer";
 import QrCode from "qrcode";
 import Button from "./utils/Button";
+import { API_BASE_URL } from "../config";
 function HuntForm({ isUnoff, roomId }) {
   const User = JSON.parse(localStorage.getItem("User"));
   const [formData, setFormData] = useState({
@@ -226,13 +227,13 @@ function HuntForm({ isUnoff, roomId }) {
     try {
       if (isUnoff) {
         const response = await axios.post(
-          "http://localhost:8000/unoffHunts",
+          `${API_BASE_URL}/api/unoffHunts`,
           formData
         );
         console.log("Hunt created:", response.data);
       } else {
         const response = await axios.post(
-          "http://localhost:8000/hunts",
+          `${API_BASE_URL}/api/hunts`,
           formData
         );
         console.log("Hunt created:", response.data);

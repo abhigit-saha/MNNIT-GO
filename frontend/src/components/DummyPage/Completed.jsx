@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Awards from "../Awards";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../../config";
+
 //make this a parent component, kind of like a protected component.
 function Completed({ username, credential }) {
   const User = localStorage.getItem("User");
@@ -16,7 +18,7 @@ function Completed({ username, credential }) {
     async function checkCredentials() {
       try {
         const response = await axios.post(
-          "http://localhost:8000/credential/verify-credential",
+          `${API_BASE_URL}/api/credential/verify-credential`,
           { credential: credential }
         );
 
