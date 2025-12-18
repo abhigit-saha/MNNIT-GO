@@ -73,6 +73,10 @@ const generateAccessAndRefreshTokens = async (userId) => {
     const user = await User.findById(userId);
     console.log("user there", user);
 
+    // Debug: Check if environment variables are loaded
+    console.log("ACCESS_TOKEN_SECRET:", process.env.ACCESS_TOKEN_SECRET);
+    console.log("REFRESH_TOKEN_SECRET:", process.env.REFRESH_TOKEN_SECRET);
+
     const accessToken = user.generateAccessToken();
     const refreshToken = user.generateRefreshToken();
 
@@ -85,6 +89,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
 
     return { accessToken, refreshToken };
   } catch (error) {
+    console.log("error: ", error);
     throw new ApiError(
       500,
       "Something went wrong while generating refresh and access tokens"
