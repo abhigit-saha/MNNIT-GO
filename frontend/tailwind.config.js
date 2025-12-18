@@ -1,5 +1,5 @@
 // tailwind.config.js
-module.exports = {
+export default {
   content: [
     "./index.html", // Include the main HTML file
     "./src/**/*.{js,ts,jsx,tsx}", // Include all JavaScript, TypeScript, JSX, and TSX files in src folder

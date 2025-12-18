@@ -8,6 +8,14 @@ dotenv.config({
   path: "./.env",
 });
 
+// Debug: Check if environment variables are loaded
+console.log("Environment variables check:");
+console.log("ACCESS_TOKEN_SECRET:", process.env.ACCESS_TOKEN_SECRET);
+console.log(
+  "REFRESH_TOKEN_SECRET:",
+  process.env.REFRESH_TOKEN_SECRET ? "✓ Loaded" : "✗ Not found"
+);
+
 connectDB()
   .then(() => {
     server.listen(process.env.PORT || 8000, () => {
