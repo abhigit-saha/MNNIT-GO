@@ -32,7 +32,7 @@ myEmitter.on(
 
 io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", //for now allow all
+    origin: ["http://localhost:5173", "http://3.111.36.219"], // your frontend URL
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -70,7 +70,7 @@ io.sockets.on("connection", (socket) => {
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173", // your frontend URL
+    origin: ["http://localhost:5173", "http://3.111.36.219"], // your frontend URL
     credentials: true,
   })
 );
