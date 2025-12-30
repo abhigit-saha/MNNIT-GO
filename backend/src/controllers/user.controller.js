@@ -68,6 +68,14 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/APIResponse.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+
+// Cookie options - secure only in production with HTTPS
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production" && process.env.USE_HTTPS === "true",
+  sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+};
+
 const generateAccessAndRefreshTokens = async (userId) => {
   try {
     const user = await User.findById(userId);
@@ -174,15 +182,10 @@ const loginUser = asyncHandler(async (req, res) => {
     "-password -refreshToken"
   );
 
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
-
   return res
     .status(200)
-    .cookie("accessToken", accessToken, options)
-    .cookie("refreshToken", refreshToken, options)
+    .cookie("accessToken", accessToken, cookieOptions)
+    .cookie("refreshToken", refreshToken, cookieOptions)
     .json(
       new ApiResponse(
         200,
@@ -208,15 +211,10 @@ const logoutUser = asyncHandler(async (req, res) => {
     }
   );
 
-  const options = {
-    httpOnly: true, // only http requests from the server can modify them
-    secure: true,
-  };
-
   return res
     .status(200)
-    .clearCookie("accessToken", options)
-    .clearCookie("refreshToken", options)
+    .clearCookie("accessToken", cookieOptions)
+    .clearCookie("refreshToken", cookieOptions)
     .json(new ApiResponse(200, {}, "User Logged Out"));
 });
 
@@ -238,18 +236,14 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
   if (incomingRefreshToken !== user?.refreshToken) {
     throw new ApiError(401, "Invalid Refresh Token");
   }
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
   const { accessToken, newRefreshToken } = await generateAccessAndRefreshTokens(
     user._id
   );
 
   return res
     .status(200)
-    .cookie("accessToken", accessToken, options)
-    .cookie("refreshToken", newRefreshToken, options)
+    .cookie("accessToken", accessToken, cookieOptions)
+    .cookie("refreshToken", newRefreshToken, cookieOptions)
     .json(
       new ApiResponse(
         200,
