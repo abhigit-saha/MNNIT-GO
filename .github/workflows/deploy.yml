@@ -1,0 +1,42 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - qr-feature
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/MNNIT-GO
+
+            # Pull latest changes
+            git pull origin qr-feature
+
+            # Install backend dependencies (if package.json changed)
+            cd backend
+            npm install --production
+            cd ..
+
+            # Build frontend
+            cd frontend
+            npm install
+            npm run build
+            cd ..
+
+            # Restart backend server
+            pm2 restart mnnit-go-backend
+
+            echo "✅ Deployment completed successfully!"

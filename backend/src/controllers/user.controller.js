@@ -72,7 +72,8 @@ import bcrypt from "bcrypt";
 // Cookie options - secure only in production with HTTPS
 const cookieOptions = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production" && process.env.USE_HTTPS === "true",
+  secure:
+    process.env.NODE_ENV === "production" && process.env.USE_HTTPS === "true",
   sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
 };
 
