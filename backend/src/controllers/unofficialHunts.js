@@ -6,7 +6,8 @@ const rooms = {}; // Object to track room participants
 export const initializeHuntSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:5173", // Adjust this to your frontend URL
+      origin: ["http://localhost:5173", "http://3.111.36.219"],
+      methods: ["GET", "POST"],
       credentials: true,
     },
   });
