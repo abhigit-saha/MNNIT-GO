@@ -1,13 +1,13 @@
-# 🏛️ College Hunt - Campus Treasure Adventure  
+# College Hunt - Campus Treasure Adventure  
 
-## 🚀 Overview  
+## Overview  
 **College Hunt** is an innovative gamified platform that transforms college campuses into interactive treasure hunt arenas. Designed initially for MNNIT Allahabad, it combines physical exploration with digital rewards through QR codes, real-time tracking, and vendor partnerships.
 
 ## Project Demo Video: https://www.youtube.com/watch?v=C4x8epOaMLo
 
-## ✨ Key Features  
+## Key Features  
 
-### 🧭 Core Functionality  
+### Core Functionality  
 **QR-Code Checkpoints** - Scan hidden codes across campus to progress  
 **Live Leaderboard** - Real-time rankings with Redis and WebSockets powered updates (<500ms)  
 **Zone Restrictions** - Map boundaries ensure players stay in hunt areas  
@@ -16,13 +16,13 @@
 **Automated Prize Distribution** - Instant rewards for top performers  
 **Sponsorship Dashboard** - Businesses can track campaign performance  
 
-### 🚧 Future Enhancements  
+### Future Enhancements  
 **3D Campus Navigation** - Interactive virtual map of MNNIT  
 **AR Puzzle Solving** - Augmented reality clue discovery  
 **Alumni Mode** - Special hunts for former students  
 **Achievement System** - Badges and collectibles  
 
-## 🖥️ Tech Stack  
+## Tech Stack  
 **Frontend**: React.js + Mapbox GL JS  
 **Backend**: Node.js/Express  
 **Database**: MongoDB (Primary), Redis (Caching)  
@@ -30,7 +30,7 @@
 
 
 
-## 🛠️ Installation  
+## Installation  
 ```bash
 # Clone the repository
 git clone https://github.com/abhigit-saha/MNNIT-GO
